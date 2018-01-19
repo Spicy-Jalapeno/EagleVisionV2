@@ -1,0 +1,18 @@
+- Write modular functions
+- Use tabs for indentation
+- Add comment above each function for documentation and end the comment with your initials and the date
+- Function names should use camelCase
+- Variable names should use camelCase
+- Class names should use TitleCase
+- Functions should have this format:
+
+/* This function prints hello world to the screen
+ * JM 1/19/18
+ */
+printHelloWorld(){
+    console.write("hello world");
+}
+
+- Don't use inline styles
+- Every function should have a test case (aim for 100% code coverage)
+- A line shouldn't be longer than 100 characters
