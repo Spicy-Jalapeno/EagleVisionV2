@@ -1,2 +1,0 @@
-Background #000000
-text color #134249052
