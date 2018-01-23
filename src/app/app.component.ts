@@ -1,23 +1,31 @@
 import { Component, ViewChild } from '@angular/core';
-import { MenuController, NavController, Platform } from 'ionic-angular';
+import { Platform, Nav } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import firebase from 'firebase';
 import { HomePage } from '../pages/home/home';
+import { MapPage } from '../pages/map/map';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   // rootPage:any = HomePage;
-  @ViewChild('content') navCtrl: NavController
+  @ViewChild(Nav) nav: Nav;
   rootPage: any;
-
+  pages: Array<{title: string, component: any}>;
   constructor(platform: Platform,
     statusBar: StatusBar,
     splashScreen: SplashScreen) {
 
-
+      // used for an example of ngFor and navigation
+      this.pages = [
+      
+      
+        { title : 'Home', component:HomePage},
+        { title: 'Map', component: MapPage },
+       
+      ];
 
     //Firebase config...this will change once we create an auspex-app firebase
     firebase.initializeApp({
@@ -49,5 +57,12 @@ export class MyApp {
     });
 
   }
+  openPage(page) {
+    // Reset the content nav to have just this page
+    // we wouldn't want the back button to show in this scenario
+    
+    this.nav.setRoot(page.component);
+   
+    }
 }
 

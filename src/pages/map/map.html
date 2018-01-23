@@ -1,0 +1,38 @@
+<!-- revised: 1/23/2018 
+      by: Alexis Hernandez  -->
+
+
+<!-- <ion-header>
+
+  <ion-navbar>
+    <ion-title>map</ion-title>
+  </ion-navbar>
+
+</ion-header> -->
+
+
+<ion-content class="map-page" no-bounce>
+  <div #map id="map" class="my-map"></div>
+
+  <!-- <button ion-button block (click)="openMenu()">
+      Show
+    </button> -->
+    
+    <!-- div contains searchbar  -->
+    <div class="search-bar-container" >
+
+    
+        <button ion-button menuToggle class="menu-button-toggle">
+            <ion-icon name="menu" class="menu-icon"></ion-icon>
+          </button>
+    
+       <ion-searchbar  class="inner-search"(ionIput)="getItems($event)"></ion-searchbar>
+      
+    </div>
+
+<!-- floating action button on the bottom right screen -->
+  <ion-fab right bottom mini>
+    <button ion-fab class="location"><ion-icon name="locate"></ion-icon></button>
+  </ion-fab>
+
+</ion-content>

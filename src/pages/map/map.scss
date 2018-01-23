@@ -1,0 +1,139 @@
+page-map {
+    .my-map{
+      position: absolute;
+      height: 100%;
+      width: 100%;
+    }
+    
+    .search-bar-container{
+      position: fixed;
+      top: 9.5%;
+      text-align: center;
+      width: 97%;
+      height: 7%;
+      left: 1.5%;
+      background-color: #488aff;
+      border-radius:10px;
+      
+    }
+    
+    .inner-search{
+      
+      position: fixed;
+      width: 85%;
+      left: 12%;
+      
+      top: 9.7%;
+      background-color:rgba(0, 0, 0, 0);
+      border-color: rgba(0, 0, 0, 0);
+      
+    }
+    
+    .searchbar-input{
+    
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+      
+    }
+    
+    .menu-button-toggle{
+      position: fixed;
+      top:9.5%;
+      height: 6%;
+      width: 10%;
+      left: 3%;
+    }
+    
+    
+    
+    .menu-icon{
+      position: absolute;
+      right: 25%;
+      font-size: 1.8em;
+    }
+    
+    
+    
+    
+    
+    
+    }
+    .map-page{
+    scroll-content{
+      overflow: hidden;
+    }
+     }
+    
+    
+
+.md{
+  page-map{
+
+    .inner-search{
+      position: fixed;
+      height: 5%;
+      top: 10.5%;
+      width: 82%;
+      left: 14%;
+      border-radius: 5px;
+      background-color: transparent;
+      
+    
+    }
+    .searchbar-input{
+      position: absolute;
+      height: 100%;
+      top: 0%;
+      width: 100%;
+      left: 0%;
+      border-radius: 5px;
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+   
+    }
+
+    .searchbar-input-container{
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      top: 0%;
+      left: 0%;
+      
+    }
+
+    // .search-bar-container{
+    //   position: absolute;
+    //   top: 10.3%;
+    //   text-align: center;
+    //   width: 97%;
+    //   height: 5%;
+    //   left: 1.5%;
+    //   background-color: #488aff;
+    //   border-radius:10px;
+      
+   // }
+    .menu-button-toggle{
+      position: fixed;
+      top:9.5%;
+      
+      width: 10%;
+      left: 3%;
+      box-shadow: none;
+    }
+    .searchbar-search-icon{
+      position: relative;
+      top: 22% !important;
+      left: 4%;
+      z-index: 10000;
+      margin-right: 0px;
+      pointer-events: none;
+      text-decoration-color: red;
+    }
+
+    .menu-icon{
+      position: absolute;
+      left: 25%;
+     font-size: 2em;
+    }
+
+
+  }
+}
