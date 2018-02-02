@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {Platform, Nav , ActionSheetController} from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth';
 
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
