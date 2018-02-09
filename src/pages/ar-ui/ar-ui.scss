@@ -1,0 +1,16 @@
+page-ar-ui {
+    .nav-decor,ion-app{ 
+        background-color: transparent; 
+    }
+    ion-navbar, ion-header{
+        visibility: hidden;
+    }
+    .back{
+        position: fixed;
+        top: 1%;
+        left: 1%;
+        color: white;
+        background-color: transparent;
+        box-shadow: none;
+    }
+}

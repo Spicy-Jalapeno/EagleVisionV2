@@ -6,6 +6,7 @@ import firebase from 'firebase';
 import { HomePage } from '../pages/home/home';
 import { MapPage } from '../pages/map/map';
 import { MorePage } from '../pages/more/more';
+import { ArUiPage } from '../pages/ar-ui/ar-ui';
 
 @Component({
   templateUrl: 'app.html'
@@ -25,6 +26,7 @@ export class MyApp {
       
         { title : 'Home', component:HomePage},
         { title: 'Map', component: MapPage },
+        { title: 'AR', component:ArUiPage },
         { title: 'More...', component:MorePage}
        
       ];
