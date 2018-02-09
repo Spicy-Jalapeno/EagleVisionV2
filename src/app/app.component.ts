@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import firebase from 'firebase';
 import { HomePage } from '../pages/home/home';
 import { MapPage } from '../pages/map/map';
+import { MorePage } from '../pages/more/more';
 
 @Component({
   templateUrl: 'app.html'
@@ -24,6 +25,7 @@ export class MyApp {
       
         { title : 'Home', component:HomePage},
         { title: 'Map', component: MapPage },
+        { title: 'More...', component:MorePage}
        
       ];
 

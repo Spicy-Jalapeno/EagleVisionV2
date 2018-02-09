@@ -8,12 +8,14 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { AuthProvider } from '../providers/auth/auth';
 import { MapPage } from '../pages/map/map';
+import { MorePage } from '../pages/more/more';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    MapPage
+    MapPage,
+    MorePage
   ],
   imports: [
     BrowserModule,
@@ -23,7 +25,8 @@ import { MapPage } from '../pages/map/map';
   entryComponents: [
     MyApp,
     HomePage,
-    MapPage
+    MapPage,
+    MorePage
   ],
   providers: [
     StatusBar,
