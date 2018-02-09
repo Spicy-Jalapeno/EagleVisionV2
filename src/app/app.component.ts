@@ -1,9 +1,12 @@
 import { Component, ViewChild } from '@angular/core';
-import { Platform, Nav } from 'ionic-angular';
+import { Nav } from 'ionic-angular';
+import { MenuController, NavController, Platform, Alert, AlertController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import firebase from 'firebase';
 import { HomePage } from '../pages/home/home';
+import { AngularFireAuth } from 'angularfire2/auth';
+import firebase from 'firebase';
+
 import { MapPage } from '../pages/map/map';
 
 @Component({
@@ -16,7 +19,9 @@ export class MyApp {
   pages: Array<{title: string, component: any}>;
   constructor(platform: Platform,
     statusBar: StatusBar,
-    splashScreen: SplashScreen) {
+    splashScreen: SplashScreen,
+    public alertCtrl: AlertController,
+    afAuth: AngularFireAuth) {
 
       // used for an example of ngFor and navigation
       this.pages = [
@@ -28,25 +33,23 @@ export class MyApp {
       ];
 
     //Firebase config...this will change once we create an auspex-app firebase
-    firebase.initializeApp({
-      apiKey: "AIzaSyDJaGqHAgjEqKyfFa__prwx78N46DnDm1E",
-      authDomain: "eagle-vision-dev.firebaseapp.com",
-      databaseURL: "https://eagle-vision-dev.firebaseio.com",
-      projectId: "eagle-vision-dev",
-      storageBucket: "eagle-vision-dev.appspot.com",
-      messagingSenderId: "209677839358"
-    });
+    // firebase.initializeApp({
+    //   apiKey: "AIzaSyDJaGqHAgjEqKyfFa__prwx78N46DnDm1E",
+    //   authDomain: "eagle-vision-dev.firebaseapp.com",
+    //   databaseURL: "https://eagle-vision-dev.firebaseio.com",
+    //   projectId: "eagle-vision-dev",
+    //   storageBucket: "eagle-vision-dev.appspot.com",
+    //   messagingSenderId: "209677839358"
+    // });
 
-     //checking if user is logged in previously...if not, take to login page...if so, bring to home
-     const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
-      if (!user) {
+    const authObserver = afAuth.authState.subscribe( user => {
+      if (!user) { 
         this.rootPage = 'login';
-        unsubscribe();
-      } else { 
+        authObserver.unsubscribe();
+      } else {
         this.rootPage = HomePage;
-        unsubscribe();
+        authObserver.unsubscribe();
       }
-      
     });
 
     platform.ready().then(() => {

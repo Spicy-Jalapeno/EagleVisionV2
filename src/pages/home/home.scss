@@ -7,4 +7,17 @@ page-home {
         float: right;
         display: inline-block;
     }
+
+    .increment{
+        position: absolute;
+        top: 50%;
+        left: 30%;
+    }
+
+    .new{
+        background-color:blue;
+        position: absolute;
+        top: 70%;
+        left: 30%;
+    }
 } 
