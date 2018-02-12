@@ -11,6 +11,15 @@ import { AuthProvider } from '../providers/auth/auth';
 import { MapPage } from '../pages/map/map';
 import { MorePage } from '../pages/more/more';
 import { ArUiPage } from '../pages/ar-ui/ar-ui';
+import { environment } from '../environments/environment';
+
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+
+import { IncrementationServiceProvider } from '../providers/incrementation-service/incrementation-service';
+import { PageNameServiceProvider } from '../providers/page-name-service/page-name-service';
+
 
 @NgModule({
   declarations: [
@@ -22,9 +31,12 @@ import { ArUiPage } from '../pages/ar-ui/ar-ui';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp, { 
-      mode: "md"
-    })
+    IonicModule.forRoot(MyApp, {
+      mode: 'md', //md: android , wp: for windows 
+  }),
+  AngularFireModule.initializeApp(environment.firebaseConfig),
+  AngularFireAuthModule,
+  AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -40,6 +52,8 @@ import { ArUiPage } from '../pages/ar-ui/ar-ui';
     CameraPreview,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,
+    IncrementationServiceProvider,
+    PageNameServiceProvider
   ]
 })
 export class AppModule {}
