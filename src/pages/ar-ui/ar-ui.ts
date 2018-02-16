@@ -4,19 +4,22 @@ import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, Camer
 import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
 import { HomePage } from '../home/home';
 
-
 @Component({
   selector: 'page-ar-ui',
   templateUrl: 'ar-ui.html',
+  
 })
 
 export class ArUiPage implements OnDestroy {
 
+  public toggoleShowHide = false;
+  
   constructor(
     public platform: Platform,
     public nav: Nav,
     public actionsheetCtrl: ActionSheetController,
     private cameraPreview: CameraPreview) { 
+
       this.platform.ready().then(()=> {
         let options = {
           x: 0,
@@ -36,6 +39,7 @@ export class ArUiPage implements OnDestroy {
             console.log(err)
           });
       })
+
     }
 
   ionViewDidLoad() {
@@ -48,6 +52,10 @@ export class ArUiPage implements OnDestroy {
 
   goHome(){
     this.nav.setRoot(HomePage)
+  }
+
+  displayUI(){
+    this.toggoleShowHide = !this.toggoleShowHide;
   }
 
 }
