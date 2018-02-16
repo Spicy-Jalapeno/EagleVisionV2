@@ -19,6 +19,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 import { IncrementationServiceProvider } from '../providers/incrementation-service/incrementation-service';
 import { PageNameServiceProvider } from '../providers/page-name-service/page-name-service';
+import { SettingsPage } from '../pages/settings/settings';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { PageNameServiceProvider } from '../providers/page-name-service/page-nam
     HomePage,
     MapPage,
     ArUiPage,
-    MorePage
+    MorePage,
+    SettingsPage
   ],
   imports: [
     BrowserModule,
@@ -44,7 +46,8 @@ import { PageNameServiceProvider } from '../providers/page-name-service/page-nam
     HomePage,
     MapPage,
     ArUiPage,
-    MorePage
+    MorePage,
+    SettingsPage
   ],
   providers: [
     StatusBar,
