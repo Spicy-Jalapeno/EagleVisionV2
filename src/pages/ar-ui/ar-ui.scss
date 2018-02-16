@@ -7,10 +7,20 @@ page-ar-ui {
     }
     .back{
         position: fixed;
-        top: 1%;
+        top: 3%;
         left: 1%;
         color: white;
         background-color: transparent;
         box-shadow: none;
     }
+
+    .test{
+        position: fixed;
+        top: 60%;
+        left: 45%;
+        color: white;
+        background-color: transparent;
+        box-shadow: none;
+    }
+
 }

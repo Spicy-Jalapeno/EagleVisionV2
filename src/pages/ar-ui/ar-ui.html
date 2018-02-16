@@ -1,3 +1,21 @@
+<ion-card *ngIf="toggoleShowHide" class = "card-css">
+  <div class = "holmes-img">
+      <img src="https://www2.fgcu.edu/HeaderImages/Whitaker_College_of_Engineering_Header.jpg"/>
+  </div>
+  <ion-card-content>
+    <ion-card-title>
+      Holmes Hall
+      </ion-card-title>
+    <p>
+      CONTACT INFORMATION <br/>
+      Administrative Office, 208 Holmes Hall <br/>
+      Advising Office, 207 Holmes Hall <br/>
+      Phone: 239-590-7390<br/>
+      Email: WCEinfo@fgcu.edu<br/>
+    </p>
+  </ion-card-content>
+</ion-card>
+
 <ion-header>
 
   <ion-navbar>
@@ -17,4 +35,9 @@
     <ion-icon name="arrow-back"></ion-icon>
   </button>
 
+  <button ion-button class="test" (click)="displayUI()">
+    <ion-icon name="ionic"></ion-icon>
+  </button>
+
 </ion-content>
+
