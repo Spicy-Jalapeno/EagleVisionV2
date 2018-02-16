@@ -10,6 +10,7 @@ import firebase from 'firebase';
 import { MapPage } from '../pages/map/map';
 import { MorePage } from '../pages/more/more';
 import { ArUiPage } from '../pages/ar-ui/ar-ui';
+import { SettingsPage } from '../pages/settings/settings';
 
 @Component({
   templateUrl: 'app.html'
@@ -32,7 +33,8 @@ export class MyApp {
         { title : 'Home', component:HomePage},
         { title: 'Map', component: MapPage },
         { title: 'AR', component:ArUiPage },
-        { title: 'More...', component:MorePage}
+        { title: 'More...', component:MorePage},
+        { title: 'Settings', component:SettingsPage}
        
       ];
 
