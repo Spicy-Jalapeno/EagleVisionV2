@@ -7,16 +7,27 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>settings</ion-title>
+    <ion-title>Settings</ion-title>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <button ion-button class="log-out" (click)="logOut()">Logout</button>
+    
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+
+<ion-content >
+<div class="groupOfBtns">
+  <button ion-button block clear (click)="goToResetPassword()">
+    Reset Password
+  </button>
+  <button ion-button block clear class="log-out" (click)="logOut()">Logout</button>
+  <button ion-button block clear class="EagleID" > Reload Eagle ID </button> 
+  <button ion-button block clear class="About" (click)="openModal()" >About Us</button>
+</div>
+
+
 
 </ion-content>

@@ -1,17 +1,13 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav } from 'ionic-angular';
-import { MenuController, NavController, Platform, Alert, AlertController } from 'ionic-angular';
+import { Platform, Nav } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { HomePage } from '../pages/home/home';
-import { AngularFireAuth } from 'angularfire2/auth';
 import firebase from 'firebase';
-
+import { HomePage } from '../pages/home/home';
 import { MapPage } from '../pages/map/map';
 import { MorePage } from '../pages/more/more';
-import { ArUiPage } from '../pages/ar-ui/ar-ui';
+import { TapComponent } from '../components/tap/tap';
 import { SettingsPage } from '../pages/settings/settings';
-
 @Component({
   templateUrl: 'app.html'
 })
@@ -22,9 +18,7 @@ export class MyApp {
   pages: Array<{title: string, component: any}>;
   constructor(platform: Platform,
     statusBar: StatusBar,
-    splashScreen: SplashScreen,
-    public alertCtrl: AlertController,
-    afAuth: AngularFireAuth) {
+    splashScreen: SplashScreen) {
 
       // used for an example of ngFor and navigation
       this.pages = [
@@ -32,30 +26,32 @@ export class MyApp {
       
         { title : 'Home', component:HomePage},
         { title: 'Map', component: MapPage },
-        { title: 'AR', component:ArUiPage },
-        { title: 'More...', component:MorePage},
-        { title: 'Settings', component:SettingsPage}
+        { title: 'More...', component: MorePage},
+        { title: 'TapInGo', component:TapComponent},
+        {title : 'Settings', component:SettingsPage}
        
       ];
 
     //Firebase config...this will change once we create an auspex-app firebase
-    // firebase.initializeApp({
-    //   apiKey: "AIzaSyDJaGqHAgjEqKyfFa__prwx78N46DnDm1E",
-    //   authDomain: "eagle-vision-dev.firebaseapp.com",
-    //   databaseURL: "https://eagle-vision-dev.firebaseio.com",
-    //   projectId: "eagle-vision-dev",
-    //   storageBucket: "eagle-vision-dev.appspot.com",
-    //   messagingSenderId: "209677839358"
-    // });
+    firebase.initializeApp({
+      apiKey: "AIzaSyDJaGqHAgjEqKyfFa__prwx78N46DnDm1E",
+      authDomain: "eagle-vision-dev.firebaseapp.com",
+      databaseURL: "https://eagle-vision-dev.firebaseio.com",
+      projectId: "eagle-vision-dev",
+      storageBucket: "eagle-vision-dev.appspot.com",
+      messagingSenderId: "209677839358"
+    });
 
-    const authObserver = afAuth.authState.subscribe( user => {
-      if (!user) { 
+     //checking if user is logged in previously...if not, take to login page...if so, bring to home
+     const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
+      if (!user) {
         this.rootPage = 'login';
-        authObserver.unsubscribe();
-      } else {
+        unsubscribe();
+      } else { 
         this.rootPage = HomePage;
-        authObserver.unsubscribe();
+        unsubscribe();
       }
+      
     });
 
     platform.ready().then(() => {

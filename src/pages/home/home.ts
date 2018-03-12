@@ -1,51 +1,94 @@
-import { Component } from '@angular/core';
-import {Platform, Nav , ActionSheetController, NavController} from 'ionic-angular';
-import { AuthProvider } from '../../providers/auth/auth';
-import * as moment from 'moment';
-import firebase from 'firebase';
-import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
-
+import { Component,ViewChild, NgModule } from "@angular/core";
+import { Platform, Nav, ActionSheetController,Slides } from "ionic-angular";
+import { AuthProvider } from "../../providers/auth/auth";
+import { OnInit } from "@angular/core/src/metadata/lifecycle_hooks";
+import * as moment from "moment";
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+  selector: "page-home",
+  templateUrl: "home.html"
 })
+//
 export class HomePage implements OnInit {
-
-  private todaysDate: any;
-  private dbRef: firebase.database.Reference;
+  public view: any;
   private convertedTodaysDate: any;
-  private count= 0;
-  private view: any;
+  private todaysDate: any;
+  
+  @ViewChild(Slides) slides: Slides;
+  @ViewChild(Nav) nav:Nav; 
 
+  slidesNames = [
+    {
+      title: "Police beat:Stray Cows, Alien Mask, and Allergic reaction",
+      description: "The Ionic Component Documentation.",
+      image: "assets/imgs/cop.png"
+    },
+    {
+      title: "What is Ionic?",
+      description: "<b>Ionic Framework</b> is an open.",
+      image: "assets/imgs/cop.png"
+    },
+    {
+      title: "What is Ionic Cloud?",
+      description: "The <b>Ionic Cloud</b> is a cloud.",
+      image: "assets/imgs/cop.png"
+    }
+  ];
 
-  constructor(public navCtrl: NavController, private authProvider: AuthProvider) {
+  public alerts = [
+    {
+      title: "Assignment 4 due"
+    },
+    {
+      title: "Final Exam"
+    },
+    {
+      title: "Software Document due"
+    },
+    {
+      title: "Meeting with Group"
+    },
+    {
+      title: "Assignment 5 due"
+    }
+  ];
+  constructor(
+    public platform: Platform,
+ 
+    private authProvider: AuthProvider,
+    public actionsheetCtrl: ActionSheetController,
+    private iab:InAppBrowser,
+  ) {
+    //this.nav.setRoot(HomePage);
+    this.platform = platform;            
+    this.platform.ready().then(() => { this.slides.pager = false; this.slides.freeMode = true; this.slides.centeredSlides=true; this.slides.loop=true; this.slides.spaceBetween=15;this.slides.slidesPerView=1.5});
     this.todaysDate = moment();
-    this.convertedTodaysDate = moment(this.todaysDate).format("MM-DD-YYYY")
-    console.log(this.convertedTodaysDate)    
+    this.convertedTodaysDate = moment(this.todaysDate).format(
+      "dddd, MMM Do YYYY"
+    );
+    console.log(this.convertedTodaysDate);
   }
 
-  ngOnInit(){
-    this.view = this.navCtrl.getActive().name;
-    console.log(this.view)
-  }
-
-  //Function To Log Out A User From The Eagle Vision App
-  logOut() {
-      this.authProvider.logoutUser().then(() => {
-      this.navCtrl.setRoot('login');
+  logOut(): void {
+    this.authProvider.logoutUser().then(() => {
+      this.nav.setRoot("login");
     });
   }
 
-  increment(): void {
-    this.count = this.count + 1;
-    firebase.database().ref(`test_increment/home/`+ this.convertedTodaysDate).transaction( eventSnapshot => {
-      console.log(eventSnapshot);
-      console.log(eventSnapshot + 1);
-      eventSnapshot += 1;
-      console.log("count", this.count)
-      return eventSnapshot;
-    });
+  ngOnInit() {
+    this.view = this.nav.getActive().name;
+    console.log(this.view);
   }
+  openCampusBus(){
+    const browser = this.iab.create('http://fgcu.doublemap.com/map/','_blank');
+  }
+  openDibs(){
 
+    const bower = this.iab.create('http://library.fgcu.edu/dibs','_blank',{location:'no',closebuttoncaption:'Done'});
+   // window.open = cordova.InAppBrowser.open; 
+
+  /// bower.show;
+  }
+  
 }

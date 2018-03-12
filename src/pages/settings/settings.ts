@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import {ModalController, IonicPage, Platform, Nav , ActionSheetController} from 'ionic-angular';
+import { AuthProvider } from '../../providers/auth/auth';
+import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
+import { ModalPage } from './modal/modal';
 /**
  * Generated class for the SettingsPage page.
  *
@@ -14,12 +16,29 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'settings.html',
 })
 export class SettingsPage {
+  public view: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public modalCtrl: ModalController,public platform: Platform, public nav: Nav, private authProvider: AuthProvider,public actionsheetCtrl: ActionSheetController) {
+    //this.nav.setRoot(HomePage);
+    this.platform = platform;
+   
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SettingsPage');
+  openModal(){
+    let modal = this.modalCtrl.create(ModalPage);
+    modal.present();
   }
 
+ 
+
+  logOut(): void {
+    this.authProvider.logoutUser().then(() => {
+      this.nav.setRoot('login');
+    });
+  }
+
+  ngOnInit(){
+    this.view = this.nav.getActive().name;
+    console.log(this.view);
+  }
 }

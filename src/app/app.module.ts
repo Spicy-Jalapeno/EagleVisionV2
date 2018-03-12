@@ -1,25 +1,20 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { IonicApp, IonicErrorHandler, IonicModule, Nav } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@ionic-native/camera-preview';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { AuthProvider } from '../providers/auth/auth';
 import { MapPage } from '../pages/map/map';
 import { MorePage } from '../pages/more/more';
-import { ArUiPage } from '../pages/ar-ui/ar-ui';
-import { environment } from '../environments/environment';
-
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireAuthModule } from 'angularfire2/auth';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
-
-import { IncrementationServiceProvider } from '../providers/incrementation-service/incrementation-service';
-import { PageNameServiceProvider } from '../providers/page-name-service/page-name-service';
+import { PopoverPage } from '../pages/more/popover/popover';
+import { TapComponent } from '../components/tap/tap';
+import { AppAvailability } from '@ionic-native/app-availability';
 import { SettingsPage } from '../pages/settings/settings';
+import { ModalPage } from '../pages/settings/modal/modal';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 
 @NgModule({
@@ -27,36 +22,40 @@ import { SettingsPage } from '../pages/settings/settings';
     MyApp,
     HomePage,
     MapPage,
-    ArUiPage,
     MorePage,
-    SettingsPage
+    PopoverPage, 
+    TapComponent,
+    SettingsPage,
+    ModalPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp, {
-      mode: 'md', //md: android , wp: for windows 
-  }),
-  AngularFireModule.initializeApp(environment.firebaseConfig),
-  AngularFireAuthModule,
-  AngularFireDatabaseModule
+    IonicModule.forRoot(MyApp, { 
+     // mode: 'ios',
+      mode: 'md', 
+     }),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
     MapPage,
-    ArUiPage,
     MorePage,
-    SettingsPage
+    PopoverPage,
+    TapComponent,
+    SettingsPage,
+    ModalPage
+    
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    CameraPreview,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,
-    IncrementationServiceProvider,
-    PageNameServiceProvider
+    AppAvailability,
+    InAppBrowser,
+ 
+
   ]
 })
 export class AppModule {}

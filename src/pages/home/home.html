@@ -1,24 +1,63 @@
 <ion-header>
   <ion-navbar>
-    <ion-title class="my-title">
+    <ion-title>
       Eagle Vision
     </ion-title>
     <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
+      <ion-icon name="menu" class="menuBtn"></ion-icon>
     </button>
-    <button ion-button class="log-out" (click)="logOut()">Logout</button>
+
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
-  <button ion-button class="increment" (click)="increment()" >Increment Me</button>
-  <button ion-fab class="new">New Button</button>
+<ion-content class="home-page">
+
+  <span class="today-date">{{convertedTodaysDate}} </span>
+
+  <div class="alert-parent">
+    <span class="alert-label">
+      <img class="alerts-img" src="assets/imgs/alerts.png" />Alerts</span>
+    <div *ngFor="let alert of alerts" class="single-alert">
+      <a class="alert-title">{{alert.title}}</a>
+    </div>
+  </div>
+
+
+
+
+
+  <div class="sliders">
+
+    <img class="eagle-img" src="assets/imgs/eaglenews.png">
+    <!-- Change slides spped later if need  speed="0"  -->
+    <ion-slides >
+
+      <ion-slide *ngFor="let slide of slidesNames">
+        <!-- <ion-toolbar>
+        <ion-buttons end>
+          <button ion-button color="primary">Skip</button>
+        </ion-buttons>
+      </ion-toolbar> -->
+        <img [src]="slide.image" class="slide-image" />
+        <h2 class="slide-title" [innerHTML]="slide.title"></h2>
+        <p [innerHTML]="slide.description"></p>
+      </ion-slide>
+
+      <!-- <ion-toolbar>
+      </ion-toolbar> -->
+      <!-- <img src="assets/img/ica-slidebox-img-4.png" class="slide-image"/> -->
+
+    </ion-slides>
+  </div>
+
+
+  <a class="shuttle-btn" (click)="openCampusBus()" >Campus Shuttles</a>
+
+  <div class="btn-group">
+    <button ion-button class="btn1">Hello</button>
+    <button ion-button class="btn2">Hello 2</button>
+    <button ion-button class="btn3">Hello3 </button>
+  </div>
+
+  <a class="dibs" ><img class="dibs-img" (click)="openDibs()" src="assets/imgs/dibs_header.png"></a>
 </ion-content>
-
-
-
-
