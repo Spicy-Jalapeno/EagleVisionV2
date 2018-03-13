@@ -18,6 +18,7 @@ let fixture: ComponentFixture<ArUiPage>;
 let de: DebugElement;
 let el: HTMLElement;
 describe('Page: AR', () => {
+    
 beforeEach(async(() => {
 
     TestBed.configureTestingModule({
@@ -41,7 +42,9 @@ beforeEach(async(() => {
         ]
     });
 }));
+
 beforeEach(() => {
+
     fixture = TestBed.createComponent(ArUiPage);
     comp    = fixture.componentInstance;
   
@@ -56,11 +59,18 @@ afterEach(() => {
 it('is created', () => {
     expect(fixture).toBeTruthy();
     expect(comp).toBeTruthy();
-});
+}); 
 
-it('is created', () => {
-    expect(fixture).toBeTruthy();
-    expect(comp).toBeTruthy();
+it('should display building name', () => {
+ 
+    comp.ionViewDidLoad();       
+ 
+    fixture.detectChanges();
+ 
+    de = fixture.debugElement.query(By.css('ion-card-title'));
+ 
+    expect(de).toBeDefined('Holmes Hall');
+ 
 });
 
 });
