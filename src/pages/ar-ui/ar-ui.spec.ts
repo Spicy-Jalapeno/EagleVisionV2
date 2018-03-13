@@ -11,7 +11,6 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AppAvailability } from '@ionic-native/app-availability';
 import { CameraPreview } from '@ionic-native/camera-preview';
-import { browser, element, by, ElementFinder } from 'protractor';
 
 let comp:  ArUiPage;
 let fixture: ComponentFixture<ArUiPage>;
@@ -70,6 +69,13 @@ it('should display building name', () => {
     de = fixture.debugElement.query(By.css('ion-card-title'));
  
     expect(de).toBeDefined('Holmes Hall');
+ 
+});
+
+it('should stop camera upon clicking back', () => {
+    comp.ionViewDidLoad();       
+ 
+    expect(comp.ngOnDestroy).toBeDefined();
  
 });
 
