@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Platform, Nav, ActionSheetController } from 'ionic-angular';
 import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@ionic-native/camera-preview';
 import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
@@ -11,12 +11,12 @@ import { HomePage } from '../home/home';
 })
 
 export class ArUiPage implements OnDestroy {
-
+@ViewChild(Nav) nav:Nav;
   public toggoleShowHide = false;
   
   constructor(
     public platform: Platform,
-    public nav: Nav,
+   // public nav: Nav,
     public actionsheetCtrl: ActionSheetController,
     private cameraPreview: CameraPreview) { 
 
