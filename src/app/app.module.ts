@@ -54,7 +54,6 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
     AuthProvider,
     AppAvailability,
     InAppBrowser,
- 
 
   ]
 })
