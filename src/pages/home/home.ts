@@ -10,12 +10,16 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
   templateUrl: "home.html"
 })
 //
-export class HomePage implements OnInit {
+ export class HomePage implements OnInit {
+//  export class HomePage  {
   public view: any;
   private convertedTodaysDate: any;
   private todaysDate: any;
-  
+  isOn = false;
+  isDibs = false;
+  private browser: any; 
   @ViewChild(Slides) slides: Slides;
+
   @ViewChild(Nav) nav:Nav; 
 
   slidesNames = [
@@ -62,30 +66,37 @@ export class HomePage implements OnInit {
   ) {
     //this.nav.setRoot(HomePage);
     this.platform = platform;            
-    this.platform.ready().then(() => { this.slides.pager = false; this.slides.freeMode = true; this.slides.centeredSlides=true; this.slides.loop=true; this.slides.spaceBetween=15;this.slides.slidesPerView=1.5});
+    //this.platform.ready().then(() => { this.slides.pager = false; this.slides.freeMode = true; this.slides.centeredSlides=true; this.slides.loop=true; this.slides.spaceBetween=15;this.slides.slidesPerView=1.5});
     this.todaysDate = moment();
     this.convertedTodaysDate = moment(this.todaysDate).format(
       "dddd, MMM Do YYYY"
     );
-    console.log(this.convertedTodaysDate);
+   // console.log(this.convertedTodaysDate);
   }
 
-  logOut(): void {
-    this.authProvider.logoutUser().then(() => {
-      this.nav.setRoot("login");
-    });
-  }
+  // logOut(): void {
+  //   this.authProvider.logoutUser().then(() => {
+  //     this.nav.setRoot("login");
+  //   });
+  // }
 
   ngOnInit() {
-    this.view = this.nav.getActive().name;
-    console.log(this.view);
+    // this.view = this.nav.getActive().name;
+    // console.log(this.view);
+    this.slides.pager = false; 
+    this.slides.freeMode = true; 
+    this.slides.centeredSlides=true; 
+    this.slides.loop=true; 
+    this.slides.spaceBetween=15;
+    this.slides.slidesPerView=1.5;
   }
   openCampusBus(){
-    const browser = this.iab.create('http://fgcu.doublemap.com/map/','_blank');
+    this.isOn = !this.isOn;
+    this.browser = this.iab.create('http://fgcu.doublemap.com/map/','_blank');
   }
   openDibs(){
-
-    const bower = this.iab.create('http://library.fgcu.edu/dibs','_blank',{location:'no',closebuttoncaption:'Done'});
+    this.isDibs = !this.isDibs;
+    this.browser = this.iab.create('http://library.fgcu.edu/dibs','_blank',{location:'no',closebuttoncaption:'Done'});
    // window.open = cordova.InAppBrowser.open; 
 
   /// bower.show;

@@ -15,7 +15,13 @@ import { AppAvailability } from '@ionic-native/app-availability';
 import { SettingsPage } from '../pages/settings/settings';
 import { ModalPage } from '../pages/settings/modal/modal';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { FirebaseApp } from 'angularfire2/app';
+import { environment } from '../environments/environment'; ////
 
+import { AngularFireModule } from 'angularfire2'; //
+import { AngularFireAuthModule } from 'angularfire2/auth'; ///
+import { AngularFireDatabaseModule } from 'angularfire2/database';////
 
 @NgModule({
   declarations: [
@@ -34,6 +40,10 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
      // mode: 'ios',
       mode: 'md', 
      }),
+     AngularFireModule.initializeApp(environment.firebaseConfig),///
+ AngularFireAuthModule,
+ AngularFireDatabaseModule,
+    
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -54,6 +64,8 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
     AuthProvider,
     AppAvailability,
     InAppBrowser,
+    AngularFireAuth,
+   
  
 
   ]

@@ -8,6 +8,8 @@ import { MapPage } from '../pages/map/map';
 import { MorePage } from '../pages/more/more';
 import { TapComponent } from '../components/tap/tap';
 import { SettingsPage } from '../pages/settings/settings';
+import { AngularFireAuth } from 'angularfire2/auth';
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -16,7 +18,7 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
   rootPage: any;
   pages: Array<{title: string, component: any}>;
-  constructor(platform: Platform,
+  constructor(afAuth: AngularFireAuth, platform: Platform,
     statusBar: StatusBar,
     splashScreen: SplashScreen) {
 
@@ -32,26 +34,25 @@ export class MyApp {
        
       ];
 
-    //Firebase config...this will change once we create an auspex-app firebase
-    firebase.initializeApp({
-      apiKey: "AIzaSyDJaGqHAgjEqKyfFa__prwx78N46DnDm1E",
-      authDomain: "eagle-vision-dev.firebaseapp.com",
-      databaseURL: "https://eagle-vision-dev.firebaseio.com",
-      projectId: "eagle-vision-dev",
-      storageBucket: "eagle-vision-dev.appspot.com",
-      messagingSenderId: "209677839358"
-    });
+    // //Firebase config...this will change once we create an auspex-app firebase
+    // firebase.initializeApp({
+    //   apiKey: "AIzaSyDJaGqHAgjEqKyfFa__prwx78N46DnDm1E",
+    //   authDomain: "eagle-vision-dev.firebaseapp.com",
+    //   databaseURL: "https://eagle-vision-dev.firebaseio.com",
+    //   projectId: "eagle-vision-dev",
+    //   storageBucket: "eagle-vision-dev.appspot.com",
+    //   messagingSenderId: "209677839358"
+    // });
 
      //checking if user is logged in previously...if not, take to login page...if so, bring to home
-     const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
+     const authObserver = afAuth.authState.subscribe( user => {
       if (!user) {
         this.rootPage = 'login';
-        unsubscribe();
-      } else { 
+        authObserver.unsubscribe();
+      } else {
         this.rootPage = HomePage;
-        unsubscribe();
+        authObserver.unsubscribe();
       }
-      
     });
 
     platform.ready().then(() => {
