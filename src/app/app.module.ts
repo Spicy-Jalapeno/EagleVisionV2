@@ -13,6 +13,7 @@ import { PopoverPage } from '../pages/more/popover/popover';
 import { TapComponent } from '../components/tap/tap';
 import { AppAvailability } from '@ionic-native/app-availability';
 import { SettingsPage } from '../pages/settings/settings';
+import { ArUiPage } from '../pages/ar-ui/ar-ui';
 import { ModalPage } from '../pages/settings/modal/modal';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -32,7 +33,8 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';////
     PopoverPage, 
     TapComponent,
     SettingsPage,
-    ModalPage
+    ModalPage,
+    ArUiPage
   ],
   imports: [
     BrowserModule,
@@ -54,7 +56,8 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';////
     PopoverPage,
     TapComponent,
     SettingsPage,
-    ModalPage
+    ModalPage,
+    ArUiPage
     
   ],
   providers: [
