@@ -66,7 +66,6 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';////
     InAppBrowser,
     AngularFireAuth,
    
- 
 
   ]
 })
