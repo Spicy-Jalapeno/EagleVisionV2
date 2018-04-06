@@ -1,0 +1,36 @@
+/* position of POI-radar*/
+
+.radarContainer_left {
+	position:absolute;
+	top:55px;
+	left:0px;
+	width:100px;
+	height:100px;
+}
+
+.radarContainer_right {
+	position:absolute;
+	top:55px;
+	right:0px;
+	width:100px;
+	height:100px;
+}
+
+.back{
+    
+    margin-left: -6px;
+    margin-top: -5px;
+}
+
+.search_bar{
+    
+    margin-top: -55px;
+    margin-left: 25px;
+    margin-bottom: -15px;
+}
+
+.ui-focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}

@@ -2,13 +2,13 @@
 
 <html>
 
-    <head>
-    
+<head>
+
     <!--  basic meta information -->
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="Content-Type" content="application/json; charset=utf-8">
-    <meta content="width=device-width,initial-scale=1,maximum-scale=5,user-scalable=yes" name="viewport">
-    
+    <meta content="width=device-width,initial-scale=1,maximum-scale=5,user-scalable=no" name="viewport">
+
     <title>My ARchitect World</title>
 
     <script src="https://www.wikitude.com/libs/architect.js"></script>
@@ -22,35 +22,82 @@
     <!-- jquery JS files -->
     <script type="text/javascript" src="jquery/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="jquery/jquery.mobile-1.3.2.min.js"></script>
-    
+
+    <link rel="stylesheet" href="css/poi-radar.css" />
 
     <!-- marker representation-->
-    <script src="js/marker.js"></script>    
+    <script src="js/marker.js"></script>
+
+    <script src="js/myJsonData.js"></script>
 
     <!-- World logic-->
     <script type="text/javascript" src="js/multiplepois.js"></script>
 </head>
-    
-    <body >
-     <div data-role="page" id="page1" style="background: none;" >
-            
-            <!-- MAIN PAGE CONTENT -->
 
-            <!-- transparent footer-->
-            <div data-role="footer" class="ui-bar" data-theme="f" data-position="fixed" style="text-align:center;">
+<body>
 
-                <!-- small status-button -->
-                <a style="text-align:right;" id="popupInfoButton" href="#popupInfo" data-rel="popup" data-role="button" class="ui-icon-alt" data-inline="true" data-transition="pop" data-icon="alert" data-theme="e" data-iconpos="notext">Log</a> </p>
+    <div data-role="page" id="page1" style="background: none;">
 
-                <!-- popup displayed when button clicked -->
-                <div data-role="popup" id="popupInfo" class="ui-content" data-theme="e" style="max-width:350px;">
-                  <p style="text-align:right;" id="status-message">Trying to find out where you are</p>
-                </div>
-                
+        <!-- MAIN PAGE CONTENT -->
+        <!-- header of UI holding feature buttons -->
+        <div data-role="header" data-position="fixed" data-theme="c">
+
+            <div data-role=content class="back">
+
+                <a id="back" data-role="button" data-mini="true" data-icon="arrow-l" data-iconpos="notext">
+                </a>
+
+            </div>
+
+            <!-- <a class="ui-block-a" href="javascript: World.exitWorld();" data-role="button" data-icon="delete">
+                    Back
+                    
+                </a> -->
+
+            <div data-role=content class="search_bar">
+                <ul data-role="listview" data-filter="true" data-filter-reveal="true" data-filter-placeholder="Search buildings..." data-inset="true">
+                    <li>
+                        <a href="#">Holmes Hall</a>
+                    </li>
+                    <li>
+                        <a href="#">Lutgert Hall</a>
+                    </li>
+                    <li>
+                        <a href="#">Merwin Hall</a>
+                    </li>
+                    <li>
+                        <a href="#">Griffin Hall</a>
+                    </li>
+                    <li>
+                        <a href="#">Marieb Hall</a>
+                    </li>
+                    <li>
+                        <a href="#">Whitaker Hall</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+        <!-- transparent footer-->
+        <div data-role="footer" class="ui-bar" data-theme="f" data-position="fixed" style="text-align:center;">
+
+            <!-- small status-button -->
+            <a style="text-align:right;" id="popupInfoButton" href="#popupInfo" data-rel="popup" data-role="button" class="ui-icon-alt"
+                data-inline="true" data-transition="slideup" data-icon="alert" data-theme="e" data-iconpos="notext">Log</a>
+            </p>
+
+            <!-- popup displayed when button clicked -->
+            <div data-role="popup" id="popupInfo" class="ui-content" data-theme="e" style="max-width:350px;">
+                <p style="text-align:right;" id="status-message">Trying to find out where you are</p>
             </div>
 
         </div>
 
-    </body>
+    </div>
+
     
+
+</body>
+
 </html>
