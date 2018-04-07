@@ -1,41 +1,48 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule, Nav } from 'ionic-angular';
+import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@ionic-native/camera-preview';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { AuthProvider } from '../providers/auth/auth';
 import { MapPage } from '../pages/map/map';
 import { MorePage } from '../pages/more/more';
-import { PopoverPage } from '../pages/more/popover/popover';
-import { TapComponent } from '../components/tap/tap';
-import { AppAvailability } from '@ionic-native/app-availability';
+import { ArUiPage } from '../pages/ar-ui/ar-ui';
+import { environment } from '../environments/environment';
+
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+
+import { IncrementationServiceProvider } from '../providers/incrementation-service/incrementation-service';
+import { PageNameServiceProvider } from '../providers/page-name-service/page-name-service';
 import { SettingsPage } from '../pages/settings/settings';
-import { ModalPage } from '../pages/settings/modal/modal';
+
+
+import {AutoCompleteModule} from 'ionic2-auto-complete';
+import { FormsModule } from '@angular/forms';
+import { BuildingInfoProvider } from '../providers/building-info/building-info';
+
+import { HttpClient } from '@angular/common/http';
+import { AppAvailability } from '@ionic-native/app-availability';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
-import { AngularFireAuth } from 'angularfire2/auth';
-import { FirebaseApp } from 'angularfire2/app';
-import { environment } from '../environments/environment'; ////
-
-import { AngularFireModule } from 'angularfire2'; //
-import { AngularFireAuthModule } from 'angularfire2/auth'; ///
-import { AngularFireDatabaseModule } from 'angularfire2/database';////
-
+import { TapComponent } from '../components/tap/tap';
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     MapPage,
+    ArUiPage,
     MorePage,
-    PopoverPage, 
-    TapComponent,
     SettingsPage,
-    ModalPage
+    TapComponent
   ],
   imports: [
     BrowserModule,
+   
     IonicModule.forRoot(MyApp, { 
      // mode: 'ios',
       mode: 'md', 
@@ -43,6 +50,8 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';////
      AngularFireModule.initializeApp(environment.firebaseConfig),///
  AngularFireAuthModule,
  AngularFireDatabaseModule,
+ AutoCompleteModule,
+ FormsModule
     
   ],
   bootstrap: [IonicApp],
@@ -50,21 +59,24 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';////
     MyApp,
     HomePage,
     MapPage,
+    ArUiPage,
     MorePage,
-    PopoverPage,
-    TapComponent,
     SettingsPage,
-    ModalPage
-    
+    TapComponent
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    CameraPreview,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,
     AppAvailability,
     InAppBrowser,
     AngularFireAuth,
+    BuildingInfoProvider,
+    BuildingInfoProvider,
+    
+    
    
 
   ]

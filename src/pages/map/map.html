@@ -12,7 +12,11 @@
 
 
 <ion-content class="map-page" no-bounce>
-  <div #map id="map" class="my-map"></div>
+    
+  <div #map id="map" class="my-map">
+   
+  
+  </div>
 
   <!-- <button ion-button block (click)="openMenu()">
       Show
@@ -21,18 +25,57 @@
     <!-- div contains searchbar  -->
     <div class="search-bar-container" >
 
-    
+        <ion-auto-complete [dataProvider]="buildingInfo" #searchbar  (itemSelected)='itemSelect()' [options]="{showResultsFirst:false, autocomplete:on }" ></ion-auto-complete>
         <button ion-button menuToggle class="menu-button-toggle">
             <ion-icon name="menu" class="menu-icon"></ion-icon>
-          </button>
-    
-       <ion-searchbar  class="inner-search"(ionIput)="getItems($event)"></ion-searchbar>
+          </button> </div>
+         
       
-    </div>
-
+       
+   
+   
 <!-- floating action button on the bottom right screen -->
-  <ion-fab right bottom mini>
-    <button ion-fab class="location"><ion-icon name="locate"></ion-icon></button>
-  </ion-fab>
+ 
 
+		<!-- <div class="popup-location-toggle" (click)="togglePopupMenu()" [ngClass]="{'out': openMenu}">
+			<ion-icon class="locate" name="locate"></ion-icon>
+		</div> -->
+	<!-- <ion-fab right middle mini>
+    <button ion-fab class="location"><ion-icon name="locate"></ion-icon></button>
+  </ion-fab> -->
+
+  <div class="popup-menu">
+		<div class="popup-menu-overlay" [ngClass]="{'in': openMenu}" (click)="togglePopupMenu()"></div>
+		<div class="popup-menu-toggle" (click)="togglePopupMenu()" [ngClass]="{'out': openMenu}"></div>
+		<div class="popup-menu-panel" [ngClass]="{'in': openMenu}">
+
+			<div class="popup-menu-item" (click)="goToVending()">
+				<ion-icon><img class="vending" src="assets/icon/vending.svg" /></ion-icon>
+				
+				<span>Vending</span>
+			</div>
+			<div class="popup-menu-item" (click)="goToCups()">
+				<ion-icon name="trophy"></ion-icon>
+				<span>FOOD</span>
+			</div>
+			<div class="popup-menu-item" (click)="goToLeaderboard()">
+				<ion-icon name="podium"></ion-icon>
+				<span>ADDMISSIONS</span>
+			</div>
+			<div class="popup-menu-item" (click)="goToHelp()">
+				<ion-icon name="help"></ion-icon>
+				<span>ATM</span>
+			</div>
+			<div class="popup-menu-item" (click)="goToAccount()">
+				<ion-icon name="person"></ion-icon>
+				
+				<span>ACCOUNT</span>
+			</div>
+			<div class="popup-menu-item" (click)="goToShop()">
+				<ion-icon name="cart"></ion-icon>
+				
+				<span>SHOP</span>
+			</div>
+		</div>
+	</div>
 </ion-content>
