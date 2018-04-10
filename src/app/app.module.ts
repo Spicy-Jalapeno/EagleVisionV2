@@ -3,7 +3,6 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@ionic-native/camera-preview';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -67,18 +66,12 @@ import { TapComponent } from '../components/tap/tap';
   providers: [
     StatusBar,
     SplashScreen,
-    CameraPreview,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,
     AppAvailability,
     InAppBrowser,
     AngularFireAuth,
     BuildingInfoProvider,
-    BuildingInfoProvider,
-    
-    
-   
-
   ]
 })
 export class AppModule {}
