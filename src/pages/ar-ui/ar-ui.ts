@@ -19,11 +19,30 @@ export class ArUiPage {
     public platform: Platform,
     // public nav: Nav,
     public actionsheetCtrl: ActionSheetController,
-    public navCtrl: NavController) { }
+    public navCtrl: NavController) { 
+
+      // let btn = document.getElementById("coolbutton");
+      // btn.addEventListener("click", (e:Event) => this.goHome());
+
+    }
 
   ionViewDidEnter() {
 
+    
+
     var startupConfiguration: any = { "camera_position": "back" };
+
+    // WikitudePlugin.setJSONObjectReceivedCallback(function() {
+
+    //   alert("JSON");
+
+    // });
+
+    // WikitudePlugin.setOnUrlInvokeCallback(function() {
+
+    //   alert("URL");
+
+    // });
 
     WikitudePlugin.loadARchitectWorld(
       function (success) {
@@ -35,16 +54,19 @@ export class ArUiPage {
       // "www/assets/3_3dModels_1_3dModelOnTarget/index.html", // (1) if you have a IR (Image Recognition) World, use this
       // "ir"], // (1) if you have a IR (Image Recognition) World, use this
       //"www/assets/07_3dModels_6_3dModelAtGeoLocation/index.html",  // (2) if you have a GeoLocation World, use this
-      "www/assets/POI_Multiple/index.html", 
-      ["geo"],  // (2) if you have a GeoLocation World, use this
+      "www/assets/POI_Multiple/test.html", ["geo"],  // (2) if you have a GeoLocation World, use this
       // you find other samples or Wikitude worlds in Wikitude Cordova Plugin
       // which can be downloaded from here: https://github.com/Wikitude/wikitude-cordova-plugin/archive/v5.3.1-3.3.2.zip
       <JSON>startupConfiguration
     );
+
+  }
+  
+
+  public goHome() {
+    this.nav.setRoot(HomePage)
+    
   }
 
-  // goHome() {
-  //   this.nav.setRoot(HomePage)
-  // }
-
 }
+

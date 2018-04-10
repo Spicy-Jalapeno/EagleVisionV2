@@ -44,6 +44,12 @@
         <config-file overwrite="true" parent="NSCameraUsageDescription" platform="ios" target="*-Info.plist">
             <string>Allow the app to use your camera</string>
         </config-file>
+        <config-file overwrite="true" parent="`NSPhotoLibraryUsageDescription" platform="ios" target="*-Info.plist">
+            <string>Allow the app to use your camera</string>
+        </config-file>
+        <config-file overwrite="true" parent="`NSPhotoLibraryUsageDescription" platform="ios" target="*-Info.plist">
+            <string>Allow the app to use your camera</string>
+        </config-file>
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
         <icon height="57" src="resources/ios/icon/icon.png" width="57" />
@@ -88,7 +94,11 @@
     <plugin name="cordova-plugin-camera" spec="^4.0.2" />
     <plugin name="cordova-plugin-camera-preview" spec="^0.9.0" />
     <plugin name="com.wikitude.phonegap.WikitudePlugin" spec="https://github.com/Wikitude/wikitude-cordova-plugin.git" />
+<<<<<<< Updated upstream
     <plugin name="cordova-plugin-geolocation" spec="^4.0.1" />
+=======
+    <plugin name="kunder-cordova-plugin-webview" spec="https://github.com/kunder-lab/cl.kunder.webview.git" />
+>>>>>>> Stashed changes
     <engine name="ios" spec="4.5.4" />
     <engine name="android" spec="7.0.0" />
 </widget>
