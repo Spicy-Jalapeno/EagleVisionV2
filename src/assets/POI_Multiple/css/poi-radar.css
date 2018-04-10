@@ -34,3 +34,16 @@
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
 }
+
+#lower {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+
+#panel {
+    display: none;
+/*    height: 100px;*/
+    background-color: #aaaaaa;
+    padding: 5px;
+}

@@ -1,29 +1,35 @@
 var myJsonData = [
-    {
-        // "id": "1",
-        // "longitude": "-81.775411",
-        // "latitude": "26.463637",
-        // "description": "Administrative Office, 208 Holmes Hall Advising Office, 207 Holmes Hall! Phone: 239-590-7390 Email: WCEinfo@fgcu.edu To schedule an appointment with an Academic Advisor in the U.A. Whitaker College of Engineering, please call (239) 590-1445.",
-        // "altitude": "50",
-        // "name": "Holmes Hall"
-
+    // {
     //     "id": "1",
     //     "longitude": "-81.691260",
     //     "latitude": "26.259176",
-    //     "description": "testing",
     //     "altitude": "10",
     //     "name": "Holmes Hall",
-    //     "category": "bldg"
-    // },
+    //     "category": "bldg",
+    //     "description": "U.A. Whitaker College of Engineering",
+    //     "image": "assets/holmes.jpg"
+    // }
     // {
     //     "id": "2",
     //     "longitude": "-81.691275",
     //     "latitude": "26.259106",
-    //     "description": "testing",
     //     "altitude": "10",
     //     "name": "Papa John",
-    //     "category": "food"
+    //     "category": "food",
+    //     "description": "Located in Cohen Center",
+    //     "image": "assets/cohen.jpg"
+    // },
+    // {
+    //     "id": "3",
+    //     "longitude": "-81.691300",
+    //     "latitude": "26.259200",
+    //     "altitude": "10",
+    //     "name": "Lutgert Hall",
+    //     "category": "bldg",
+    //     "description": "Lutgert College of Business",
+    //     "image": "assets/lutgert.jpg"
     // }
+    {
 
         "id": 1,
         "latitude": 26.4641588,
@@ -40,7 +46,8 @@ var myJsonData = [
         "description": '',
         "altitude": 50.0,
         "name": "PG4",
-        "category": "bldg"
+        "category": "bldg",
+        "image": "assets/holmes.jpg"
     },
     {
         "id": 3,
@@ -49,7 +56,8 @@ var myJsonData = [
         "description": '',
         "altitude": 50.0,
         "name": "WGCU",
-        "category": "bldg"
+        "category": "bldg",
+        "image": "assets/holmes.jpg"
     },
     {
         "id": 4,
@@ -58,7 +66,8 @@ var myJsonData = [
         "description": '',
         "altitude": 50.0,
         "name": "PG3",
-        "category": "bldg"
+        "category": "bldg",
+        "image": "assets/holmes.jpg"
     },
     {
         "id": 5,
@@ -67,7 +76,8 @@ var myJsonData = [
         "description": '',
         "altitude": 50.0,
         "name": "Cohen Center",
-        "category": "bldg"
+        "category": "bldg",
+        "image": "assets/holmes.jpg"
     },
     {
         "id": 6,
@@ -76,7 +86,8 @@ var myJsonData = [
         "description": '',
         "altitude": 50.0,
         "name": "Book Store",
-        "category": "bldg"
+        "category": "bldg",
+        "image": "assets/holmes.jpg"
     },
     {
         "id": 7,
@@ -85,7 +96,8 @@ var myJsonData = [
         "description": '',
         "altitude": 50.0,
         "name": "Einstein Bagels",
-        "category": "food"
+        "category": "food",
+        "image": "assets/holmes.jpg"
     },
     {
         "id": 8,
@@ -94,7 +106,8 @@ var myJsonData = [
         "description": '',
         "altitude": 50.0,
         "name": "Papa John's",
-        "category": "food"
+        "category": "food",
+        "image": "assets/holmes.jpg"
     },
     {
         "id": 9,
@@ -103,7 +116,8 @@ var myJsonData = [
         "description": '',
         "altitude": 50.0,
         "name": "Chik-Fil-A",
-        "category": "food"
+        "category": "food",
+        "image": "assets/holmes.jpg"
     },
     {
         "id": 10,
@@ -112,7 +126,8 @@ var myJsonData = [
         "description": '',
         "altitude": 50.0,
         "name": "Brahma Sushi",
-        "category": "food"
+        "category": "food",
+        "image": "assets/holmes.jpg"
     },
     {
         "id": 11,
@@ -121,7 +136,8 @@ var myJsonData = [
         "description": '',
         "altitude": 50.0,
         "name": "PG1",
-        "category": "bldg"
+        "category": "bldg",
+        "image": "assets/holmes.jpg"
     },
     {
         "id": 12,
@@ -130,7 +146,8 @@ var myJsonData = [
         "description": '',
         "altitude": 50.0,
         "name": "Library",
-        "category": "bldg"
+        "category": "bldg",
+        "image": "assets/holmes.jpg"
     },
     {
         "id": 13,
@@ -139,7 +156,8 @@ var myJsonData = [
         "description": '',
         "altitude": 50.0,
         "name": "Starbucks",
-        "category": "food"
+        "category": "food",
+        "image": "assets/holmes.jpg"
     },
     {
         "id": 14,
@@ -148,7 +166,8 @@ var myJsonData = [
         "description": '',
         "altitude": 50.0,
         "name": "Bower School of Music",
-        "category": "bldg"
+        "category": "bldg",
+        "image": "assets/holmes.jpg"
     },
     {
         "id": 15,
@@ -157,7 +176,8 @@ var myJsonData = [
         "description": '',
         "altitude": 50.0,
         "name": "Arts Complex",
-        "category": "bldg"
+        "category": "bldg",
+        "image": "assets/holmes.jpg"
     },
     {
         "id": 16,
@@ -166,7 +186,8 @@ var myJsonData = [
         "description": '',
         "altitude": 50.0,
         "name": "PG2",
-        "category": "bldg"
+        "category": "bldg",
+        "image": "assets/holmes.jpg"
     },
     {
         "id": 17,
@@ -175,7 +196,8 @@ var myJsonData = [
         "description": '',
         "altitude": 50.0,
         "name": "Health Services",
-        "category": "bldg"
+        "category": "bldg",
+        "image": "assets/holmes.jpg"
     },
     {
         "id": 18,
@@ -184,7 +206,8 @@ var myJsonData = [
         "description": '',
         "altitude": 50.0,
         "name": "University Police",
-        "category": "bldg"
+        "category": "bldg",
+        "image": "assets/holmes.jpg"
     },
     {
         "id": 19,
@@ -193,7 +216,8 @@ var myJsonData = [
         "description": '',
         "altitude": 50.0,
         "name": "Family Resource Center",
-        "category": "bldg"
+        "category": "bldg",
+        "image": "assets/holmes.jpg"
     },
     {
         "id": 20,
@@ -202,7 +226,8 @@ var myJsonData = [
         "description": '',
         "altitude": 50.0,
         "name": "Lutgert Hall",
-        "category": "bldg"
+        "category": "bldg",
+        "image": "assets/holmes.jpg"
     },
     {
         "id": 21,
@@ -211,7 +236,8 @@ var myJsonData = [
         "description": '',
         "altitude": 50.0,
         "name": "Dunkin Donuts",
-        "category": "food"
+        "category": "food",
+        "image": "assets/holmes.jpg"
     },
     {
         "id": 22,
@@ -220,7 +246,8 @@ var myJsonData = [
         "description": '',
         "altitude": 50.0,
         "name": "Holmes Hall",
-        "category": "bldg"
+        "category": "bldg",
+        "image": "assets/holmes.jpg"
     },
     {
         "id": 23,
@@ -229,7 +256,8 @@ var myJsonData = [
         "description": '',
         "altitude": 50.0,
         "name": "Seidler Hall",
-        "category": "bldg"
+        "category": "bldg",
+        "image": "assets/holmes.jpg"
     },
     {
         "id": 24,
@@ -238,7 +266,8 @@ var myJsonData = [
         "description": '',
         "altitude": 50.0,
         "name": "Egan Observatory",
-        "category": "bldg"
+        "category": "bldg",
+        "image": "assets/holmes.jpg"
     },
     {
         "id": 25,
@@ -247,7 +276,8 @@ var myJsonData = [
         "description": '',
         "altitude": 50.0,
         "name": "Whitaker Hall",
-        "category": "bldg"
+        "category": "bldg",
+        "image": "assets/holmes.jpg"
     },
     {
         "id": 26,
@@ -256,7 +286,8 @@ var myJsonData = [
         "description": '',
         "altitude": 50.0,
         "name": "Griffin Hall",
-        "category": "bldg"
+        "category": "bldg",
+        "image": "assets/holmes.jpg"
     },
     {
         "id": 27,
@@ -265,7 +296,8 @@ var myJsonData = [
         "description": '',
         "altitude": 50.0,
         "name": "Food Forest",
-        "category": "bldg"
+        "category": "bldg",
+        "image": "assets/holmes.jpg"
     },
     {
         "id": 28,
@@ -274,6 +306,7 @@ var myJsonData = [
         "description": '',
         "altitude": 50.0,
         "name": "Welcome Center",
-        "category": "bldg"
+        "category": "bldg",
+        "image": "assets/holmes.jpg"
     }
 ];
