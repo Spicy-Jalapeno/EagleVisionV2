@@ -19,16 +19,14 @@ export class ArUiPage {
     public platform: Platform,
     // public nav: Nav,
     public actionsheetCtrl: ActionSheetController,
-    public navCtrl: NavController) { 
+    public navCtrl: NavController) {
 
-      // let btn = document.getElementById("coolbutton");
-      // btn.addEventListener("click", (e:Event) => this.goHome());
+    // let btn = document.getElementById("coolbutton");
+    // btn.addEventListener("click", (e:Event) => this.goHome());
 
-    }
+  }
 
   ionViewDidEnter() {
-
-    
 
     var startupConfiguration: any = { "camera_position": "back" };
 
@@ -61,11 +59,11 @@ export class ArUiPage {
     );
 
   }
-  
+
 
   public goHome() {
     this.nav.setRoot(HomePage)
-    
+
   }
 
 }

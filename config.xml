@@ -99,6 +99,6 @@
     <allow-navigation href="http://10.100.252.84:8101" />
     <plugin name="cordova-plugin-device" spec="^1.1.7" />
     <plugin name="com.lampa.startapp" spec="^0.1.4" />
-    <engine name="ios" spec="^4.5.4" />
+    <engine name="ios" spec="4.5.4" />
     <engine name="android" spec="7.0.0" />
 </widget>
