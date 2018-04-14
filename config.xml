@@ -44,12 +44,6 @@
         <config-file overwrite="true" parent="NSCameraUsageDescription" platform="ios" target="*-Info.plist">
             <string>Allow the app to use your camera</string>
         </config-file>
-        <config-file overwrite="true" parent="`NSPhotoLibraryUsageDescription" platform="ios" target="*-Info.plist">
-            <string>Allow the app to use your camera</string>
-        </config-file>
-        <config-file overwrite="true" parent="`NSPhotoLibraryUsageDescription" platform="ios" target="*-Info.plist">
-            <string>Allow the app to use your camera</string>
-        </config-file>
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
         <icon height="57" src="resources/ios/icon/icon.png" width="57" />

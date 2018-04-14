@@ -21,7 +21,7 @@ import { PageNameServiceProvider } from '../providers/page-name-service/page-nam
 import { SettingsPage } from '../pages/settings/settings';
 
 
-import {AutoCompleteModule} from 'ionic2-auto-complete';
+import { AutoCompleteModule } from 'ionic2-auto-complete';
 import { FormsModule } from '@angular/forms';
 import { BuildingInfoProvider } from '../providers/building-info/building-info';
 
@@ -41,17 +41,17 @@ import { TapComponent } from '../components/tap/tap';
   ],
   imports: [
     BrowserModule,
-   
-    IonicModule.forRoot(MyApp, { 
-     // mode: 'ios',
-      mode: 'md', 
-     }),
-     AngularFireModule.initializeApp(environment.firebaseConfig),///
- AngularFireAuthModule,
- AngularFireDatabaseModule,
- AutoCompleteModule,
- FormsModule
-    
+
+    IonicModule.forRoot(MyApp, {
+      // mode: 'ios',
+      mode: 'md',
+    }),
+    AngularFireModule.initializeApp(environment.firebaseConfig),///
+    AngularFireAuthModule,
+    AngularFireDatabaseModule,
+    AutoCompleteModule,
+    FormsModule
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -66,7 +66,7 @@ import { TapComponent } from '../components/tap/tap';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
     AuthProvider,
     AppAvailability,
     InAppBrowser,
@@ -74,4 +74,4 @@ import { TapComponent } from '../components/tap/tap';
     BuildingInfoProvider,
   ]
 })
-export class AppModule {}
+export class AppModule { }

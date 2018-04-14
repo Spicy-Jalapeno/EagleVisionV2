@@ -1,12 +1,20 @@
+// information about server communication. This sample webservice is provided by Wikitude and returns random dummy places near given location
 // implementation of AR-Experience (aka "World")
 var World = {
+
+	//  user's latest known location, accessible via userLocation.latitude, userLocation.longitude, userLocation.altitude
+	userLocation: null,
+
 	// you may request new data from server periodically, however: in this sample data is only requested once
 	isRequestingData: false,
 
 	// true once data was fetched
 	initiallyLoadedData: false,
 
-	//different POI-Marker assets
+	// different POI-Marker assets
+	markerDrawable_idle: null,
+	markerDrawable_selected: null,
+	markerDrawable_directionIndicator: null,
 
 	// list of AR.GeoObjects that are currently shown in the scene / World
 	markerList: [],
@@ -14,23 +22,35 @@ var World = {
 	// The last selected marker
 	currentMarker: null,
 
+	locationUpdateCounter: 0,
+	updatePlacemarkDistancesEveryXLocationUpdates: 10,
+
 	// called to inject new POI data
 	loadPoisFromJsonData: function loadPoisFromJsonDataFn(poiData) {
 
-		// $('#back').click(function() { //back button
-			
-		// });
+		// destroys all existing AR-Objects (markers & radar)
+		AR.context.destroyAll();
+
+		// show radar & set click-listener
+		PoiRadar.show();
+		$('#radarContainer').unbind('click');
+		$("#radarContainer").click(PoiRadar.clickedRadar);
 
 		// empty list of visible markers
-		World.allMarker = []; //hold a list of all markers
 		World.markerList = [];
+
+		// start loading marker assets
 		World.markerDrawable = {"idle": {}, "selected": {}};
 
 		World.markerDrawable.idle["bldg"] = new AR.ImageResource("assets/marker_bldg_idle.png")
 		World.markerDrawable.selected["bldg"] = new AR.ImageResource("assets/marker_bldg_selected.png")
 		World.markerDrawable.idle["food"] = new AR.ImageResource("assets/marker_food_idle.png")
 		World.markerDrawable.selected["food"] = new AR.ImageResource("assets/marker_food_selected.png")
-
+		World.markerDrawable.idle["land"] = new AR.ImageResource("assets/marker_land_idle.png")
+		World.markerDrawable.selected["land"] = new AR.ImageResource("assets/marker_land_selected.png")
+		World.markerDrawable.idle["park"] = new AR.ImageResource("assets/marker_park_idle.png")
+		World.markerDrawable.selected["park"] = new AR.ImageResource("assets/marker_park_selected.png")
+		
 		World.markerDrawable_directionIndicator = new AR.ImageResource("assets/indi.png");
 
 		// loop through POI-information and create an AR.GeoObject (=Marker) per POI
@@ -40,35 +60,27 @@ var World = {
 				"latitude": parseFloat(poiData[currentPlaceNr].latitude),
 				"longitude": parseFloat(poiData[currentPlaceNr].longitude),
 				"altitude": parseFloat(poiData[currentPlaceNr].altitude),
-				"title": poiData[currentPlaceNr].name,
-				"description": poiData[currentPlaceNr].description,
+				"name": poiData[currentPlaceNr].name,
 				"category": poiData[currentPlaceNr].category,
+				"email": poiData[currentPlaceNr].email,
+				"phone": poiData[currentPlaceNr].phone,
 				"image": poiData[currentPlaceNr].image
 			};
 
 			World.markerList.push(new Marker(singlePoi));
-			
 		}
+
+		// updates distance information of all placemarks
+		World.updateDistanceToUserValues();
 
 		World.updateStatusMessage(currentPlaceNr + ' places loaded');
+
+		// set distance slider to 100%
+		$("#panel-distance-range").val(100);
+		$("#panel-distance-range").slider("refresh");
 	},
 
-	chiudiScreen: function chiudiScreenFn() {
-
-		if (World.initialized) {
-	  
-		 document.location = 'architectsdk://button?action=chiudiScreen';
-	  
-		}
-	  
-	},
-
-	goBack: function goBackFn() {
-
-	
-   
-	},
-
+	// sets/updates distances of all makers so they are available way faster than calling (time-consuming) distanceToUser() method all the time
 	updateDistanceToUserValues: function updateDistanceToUserValuesFn() {
 		for (var i = 0; i < World.markerList.length; i++) {
 			World.markerList[i].distanceToUser = World.markerList[i].markerObject.locations[0].distanceToUser();
@@ -90,6 +102,12 @@ var World = {
 		});
 	},
 
+	/*
+		It may make sense to display POI details in your native style. 
+		In this sample a very simple native screen opens when user presses the 'More' button in HTML. 
+		This demoes the interaction between JavaScript and native code.
+	*/
+	// user clicked "More" button in POI-detail panel -> fire event to open native screen
 	onPoiDetailMoreButtonClicked: function onPoiDetailMoreButtonClickedFn() {
 		var currentMarker = World.currentMarker;
 		var markerSelectedJSON = {
@@ -107,6 +125,15 @@ var World = {
 	// location updates, fired every time you call architectView.setLocation() in native environment
 	locationChanged: function locationChangedFn(lat, lon, alt, acc) {
 
+		// store user's current location in World.userLocation, so you always know where user is
+		World.userLocation = {
+			'latitude': lat,
+			'longitude': lon,
+			'altitude': alt,
+			'accuracy': acc
+		};
+
+
 		// request data if not already present
 		if (!World.initiallyLoadedData) {
 			World.requestDataFromLocal(lat, lon);
@@ -116,19 +143,19 @@ var World = {
 			World.updateDistanceToUserValues();
 		}
 
+		// helper used to update placemark information every now and then (e.g. every 10 location upadtes fired)
 		World.locationUpdateCounter = (++World.locationUpdateCounter % World.updatePlacemarkDistancesEveryXLocationUpdates);
 	},
 
 	// fired when user pressed maker in cam
 	onMarkerSelected: function onMarkerSelectedFn(marker) {
-
 		World.currentMarker = marker;
 
 		// update panel values
 		$("#poi-detail-image").html("<img src='" + marker.poiData.image + "'/>");
 		$("#poi-detail-title").html(marker.poiData.title);
-		$("#poi-detail-description").html(marker.poiData.description);
-		//$("#poi-detail-image").html("<img src='" + marker.poiData.image + "'/>");
+		$("#poi-detail-email").html(marker.poiData.email);
+		$("#poi-detail-phone").html(marker.poiData.phone);
 
 		/* It's ok for AR.Location subclass objects to return a distance of `undefined`. In case such a distance was calculated when all distances were queried in `updateDistanceToUserValues`, we recalcualte this specific distance before we update the UI. */
 		if( undefined == marker.distanceToUser ) {
@@ -141,14 +168,14 @@ var World = {
 		// show panel
 		// $("#panel-poidetail").panel("open", 123);
 
-		//$(".ui-panel-dismiss").unbind("mousedown");
+		// $(".ui-panel-dismiss").unbind("mousedown");
 
 		// $("#panel-poidetail").on("panelbeforeclose", function(event, ui) {
 		// 	World.currentMarker.setDeselected(World.currentMarker);
 		// });
 
 		$(document).ready(function(){
-			$("#panel").slideUp("fast");
+			$("#panel").slideDown("fast");
 		});
 	},
 
@@ -157,31 +184,22 @@ var World = {
 		if (World.currentMarker) {
 			World.currentMarker.setDeselected(World.currentMarker);
 			$(document).ready(function(){
-				$("#panel").slideDown();
+				$("#panel").slideUp("fast");
 			});
 		}
 	},
 
-	// display range slider
-	showRange: function showRangeFn() {
-		if (World.markerList.length > 0) {
+	// returns distance in meters of placemark with maxdistance * 1.1
+	getMaxDistance: function getMaxDistanceFn() {
 
-			// update labels on every range movement
-			$('#panel-distance-range').change(function() {
-				World.updateRangeValues();
-			});
+		// sort places by distance so the first entry is the one with the maximum distance
+		World.markerList.sort(World.sortByDistanceSortingDescending);
 
-			World.updateRangeValues();
-			World.handlePanelMovements();
+		// use distanceToUser to get max-distance
+		var maxDistanceMeters = World.markerList[0].distanceToUser;
 
-			// open panel
-			$("#panel-distance").trigger("updatelayout");
-			$("#panel-distance").panel("open", 123);
-		} else {
-
-			// no places are visible, because the are not loaded yet
-			World.updateStatusMessage('No places available yet', true);
-		}
+		// return maximum distance times some factor >1.0 so ther is some room left and small movements of user don't cause places far away to disappear
+		return maxDistanceMeters * 1.1;
 	},
 
 	// udpates values show in "range panel"
@@ -210,21 +228,7 @@ var World = {
 		PoiRadar.setMaxDistance(Math.max(maxRangeMeters, 1));
 	},
 
-	handlePanelMovements: function handlePanelMovementsFn() {
-
-		$("#panel-distance").on("panelclose", function(event, ui) {
-			$("#radarContainer").addClass("radarContainer_left");
-			$("#radarContainer").removeClass("radarContainer_right");
-			PoiRadar.updatePosition();
-		});
-
-		$("#panel-distance").on("panelopen", function(event, ui) {
-			$("#radarContainer").removeClass("radarContainer_left");
-			$("#radarContainer").addClass("radarContainer_right");
-			PoiRadar.updatePosition();
-		});
-	},
-
+	// returns number of places with same or lower distance than given range
 	getNumberOfVisiblePlacesInRange: function getNumberOfVisiblePlacesInRangeFn(maxRangeMeters) {
 
 		// sort markers by distance
@@ -241,16 +245,25 @@ var World = {
 		return World.markerList.length;
 	},
 
-	getMaxDistance: function getMaxDistanceFn() {
+	handlePanelMovements: function handlePanelMovementsFn() {
 
-		// sort places by distance so the first entry is the one with the maximum distance
-		World.markerList.sort(World.sortByDistanceSortingDescending);
+		$("#panel-distance").on("panelclose", function(event, ui) {
+			$("#radarContainer").addClass("radarContainer_left");
+			$("#radarContainer").removeClass("radarContainer_right");
+			PoiRadar.updatePosition();
+		});
 
-		// use distanceToUser to get max-distance
-		var maxDistanceMeters = World.markerList[0].distanceToUser;
+		$("#panel-distance").on("panelopen", function(event, ui) {
+			$("#radarContainer").removeClass("radarContainer_left");
+			$("#radarContainer").addClass("radarContainer_right");
+			PoiRadar.updatePosition();
+		});
+	},
+	
+	// request POI data
+	requestDataFromLocal: function requestDataFromLocalFn(lat, lon) {
 
-		// return maximum distance times some factor >1.0 so ther is some room left and small movements of user don't cause places far away to disappear
-		return maxDistanceMeters * 1.1;
+		World.loadPoisFromJsonData(myJsonData);
 	},
 
 	// helper to sort places by distance
@@ -261,50 +274,9 @@ var World = {
 	// helper to sort places by distance, descending
 	sortByDistanceSortingDescending: function(a, b) {
 		return b.distanceToUser - a.distanceToUser;
-	},
-
-	/*
-		In case the data of your ARchitect World is static the content should be stored within the application. 
-		Create a JavaScript file (e.g. myJsonData.js) where a globally accessible variable is defined.
-		Include the JavaScript in the ARchitect Worlds HTML by adding <script src="js/myJsonData.js"/> to make POI information available anywhere in your JavaScript.
-	*/
-
-	// request POI data
-	requestDataFromLocal: function requestDataFromLocalFn(lat, lon) {
-
-		// var poisNearby = Helper.bringPlacesToUser(myJsonData, lat, lon);
-		// World.loadPoisFromJsonData(poisNearby);
-
-		/*
-		For demo purpose they are relocated randomly around the user using a 'Helper'-function.
-		Comment out previous 2 lines and use the following line > instead < to use static values 1:1. 
-		*/
-
-		World.loadPoisFromJsonData(myJsonData);
 	}
 
 };
-
-var Helper = {
-
-	/* 
-		For demo purpose only, this method takes poi data and a center point (latitude, longitude) to relocate the given places randomly around the user
-	*/
-	bringPlacesToUser: function bringPlacesToUserFn(poiData, latitude, longitude) {
-		for (var i = 0; i < poiData.length; i++) {
-			poiData[i].latitude = latitude + (Math.random() / 5 - 0.1);
-			poiData[i].longitude = longitude + (Math.random() / 5 - 0.1);
-			/* 
-			Note: setting altitude to '0'
-			will cause places being shown below / above user,
-			depending on the user 's GPS signal altitude. 
-				Using this contant will ignore any altitude information and always show the places on user-level altitude
-			*/
-			poiData[i].altitude = AR.CONST.UNKNOWN_ALTITUDE;
-		}
-		return poiData;
-	}
-}
 
 
 /* forward locationChanges to custom function */

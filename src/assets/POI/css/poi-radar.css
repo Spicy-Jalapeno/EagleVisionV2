@@ -2,7 +2,7 @@
 
 .radarContainer_left {
 	position:absolute;
-	top:55px;
+	top:52px;
 	left:0px;
 	width:100px;
 	height:100px;
@@ -10,7 +10,7 @@
 
 .radarContainer_right {
 	position:absolute;
-	top:55px;
+	top:52px;
 	right:0px;
 	width:100px;
 	height:100px;
@@ -43,7 +43,6 @@
 
 #panel {
     display: none;
-/*    height: 100px;*/
     background-color: #aaaaaa;
     padding: 5px;
 }
