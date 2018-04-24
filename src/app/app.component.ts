@@ -33,10 +33,9 @@ export class MyApp {
       { title: 'Home', component: HomePage, active: true, icon: 'home' },
       { title: 'Canvas', component: HomePage, active: false, icon: 'custom-Canvas' },
       { title: 'Map', component: MapPage, active: false, icon: 'custom-map' },
-      { title: 'More...', component: MorePage, active: false, icon: 'ionic' },
       { title: 'TapInGo', component: TapComponent, active: false, icon: 'custom-tap' },
-      { title: 'Settings', component: SettingsPage, active: false, icon: 'ionic' },
-      { title: 'AR', component: ArUiPage, active: false, icon: 'ionic' }
+      { title: 'Settings', component: SettingsPage, active: false, icon: 'custom-settings' },
+      { title: 'AR', component: ArUiPage, active: false, icon: 'camera' }
 
     ];
 

@@ -23,7 +23,7 @@
     </button> -->
     
     <!-- div contains searchbar  -->
-    <div class="search-bar-container" >
+    <div class="search-container" >
 
         <ion-auto-complete [dataProvider]="buildingInfo" #searchbar  (itemSelected)='itemSelect()' [options]="{showResultsFirst:false, autocomplete:on }" ></ion-auto-complete>
         <button ion-button menuToggle class="menu-button-toggle">
