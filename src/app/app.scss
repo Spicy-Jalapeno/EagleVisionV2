@@ -75,7 +75,20 @@ modal-wrapper {
     }
   
     &[class*="custom-Canvas"] {
-      mask-image: url(../assets/Canvas.svg);
+     
+      mask-image: url(../assets/icon/Canvas.svg);
+    }
+    &[class*="custom-tap"] {
+   
+      mask-image: url(../assets/icon/tapingo.svg);
+    }
+
+    &[class*="custom-map"] {
+    
+      mask-image: url(../assets/icon/newmap.svg);
+      .Oval{
+        background:white;
+      }
     }
   }
  

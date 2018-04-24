@@ -24,7 +24,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
 
   slidesNames = [
     {
-      title: "Police beat:Stray Cows, Alien Mask, and Allergic reaction",
+      title: "Police beat: Stray Cows...",
       description: "The Ionic Component Documentation.",
       image: "assets/imgs/cop.png"
     },

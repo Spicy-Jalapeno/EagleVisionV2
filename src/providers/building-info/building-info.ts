@@ -5,7 +5,7 @@ import { AutoCompleteComponent } from 'ionic2-auto-complete';
 import { Platform } from 'ionic-angular/platform/platform';
 
 
-declare var google;
+ declare var google;
 /*
   Generated class for the BuildingInfoProvider provider.
 
@@ -15,8 +15,8 @@ declare var google;
 @Injectable()
 export class BuildingInfoProvider implements AutoCompleteService{
   //items: any;
-  map: any;
-  @ViewChild('map') mapElement: ElementRef;
+  // map: any;
+  // @ViewChild('map') mapElement: ElementRef;
   items = ["Arts Complex", "Aquatic Center", " Ben Griffen Hall", "Cohen Center", "Edwards Halls", "Emergent Technology Institute (ETI)", "Holmes Engineering", "Howard Hall", "Kleist Health Education Center", "Lutgert Hall", "Library", "Marieb Hall", "McTarnaghan Hall", "Merwin Hall", "Music Building", "FGCU Naples Center", "Naples Botanical Gardens", "North Lake Village", "Reed Hall", "Seidler Hall", "Sugden Hall", "Sugden Resort & Hospitality Mgt", "Biscayne Hall", "Eagle Hall", "Evergales Hall", "Plametto Hall", "Ospery Hall","Margaret S. Sugden Welcome Center", "WGCU Broadcast Building","Whitaker Hall"];
   
   buildingLocation = [{
@@ -74,27 +74,27 @@ export class BuildingInfoProvider implements AutoCompleteService{
  
   }
   ionViewDidLoad() {
-    this.initializeMap();
+    // this.initializeMap();
     
   }
 
-  initializeMap() {
-    this.platform.ready().then(() => {
-      let minZoomLevel = 16;
-      let mapOptions = {
-        zoom: minZoomLevel,
-        center: new google.maps.LatLng(26.4643209, -81.7733903),
-        mapTypeId: "roadmap",
-        disableDefaultUI: true
-      }
-      this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+  // initializeMap() {
+  //   this.platform.ready().then(() => {
+  //     let minZoomLevel = 16;
+  //     let mapOptions = {
+  //       zoom: minZoomLevel,
+  //       center: new google.maps.LatLng(26.4643209, -81.7733903),
+  //       mapTypeId: "roadmap",
+  //       disableDefaultUI: true
+  //     }
+  //     this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
 
-      // var position = new google.maps.LatLng("26.4643209", "-81.7733903");
-      // var dogwalkMarker = new google.maps.Marker({ position: position, title: "Testing" });
-      // dogwalkMarker.setMap(this.map);
-    });
+  //     // var position = new google.maps.LatLng("26.4643209", "-81.7733903");
+  //     // var dogwalkMarker = new google.maps.Marker({ position: position, title: "Testing" });
+  //     // dogwalkMarker.setMap(this.map);
+  //   });
 
-  }
+  // }
   getResults(keyword:String){
     if(keyword && keyword.trim() != ''){
    return  this.items.filter((item) => {
@@ -125,7 +125,7 @@ export class BuildingInfoProvider implements AutoCompleteService{
         console.log(lat);
         console.log(lng);
         var markerNew;
-      return   markerNew = new google.maps.Marker({position: position , title: ""});
+      return   markerNew = new google.maps.Marker({position: position , title: item.name});
      //  console.log("Setting up the map");
     //    markerNew.setMap(this.map);
       }

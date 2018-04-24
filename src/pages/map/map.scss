@@ -4,6 +4,7 @@ page-map {
     height: 100%;
     width: 100%;
   }
+
 .location{
   position:relative; 
   top: 20%;
@@ -13,7 +14,7 @@ page-map {
     top: 9.5%;
     text-align: center;
     width: 97%;
-    height: 6.5%;
+    height: 8.2vh;
     left: 1.5%;
     background-color: #004886;
     border-radius: 10px;
@@ -34,11 +35,11 @@ page-map {
   ion-auto-complete {
    // height: 6vh;
    background-color:#004886;
-   color:white;
+   //color:white;
     width: 83vw;
     position: relative;
 
-    top: 0.5vh;
+    top: 0.3vh;
     left: 3vh;
     //height: 5vh;
     border-radius: 12px;
@@ -47,12 +48,30 @@ page-map {
   }
 
   ion-auto-complete li {
-    background-color:#004886;
+    background-color:rgb(0, 72, 134);
    // box-shadow: none;
-   height: 5vh;
+    height: 5vh;
     color: white;
-  }
 
+  }
+  ion-auto-complete li:hover {
+    background-color:rgb(0, 72, 134);
+   // box-shadow: none;
+   
+    
+  }
+  ion-auto-complete li:active{
+    background-color:rgba(0, 71, 134, 0.85);
+  }
+  // ion-auto-complete ul:active{
+  //   background-color:rgba(0, 71, 134, 0.85);
+  // }
+  searchbar-input{
+
+    background-color:#004886;
+    color:white;
+ 
+   }
   // ion-auto-complete {
   //   position: fixed;
   //   width: 85%;
@@ -98,12 +117,7 @@ page-map {
   //   pointer-events: none;
   //   text-decoration-color: red;
   // }
-  searchbar-input{
-
-   background-color:#004886;
-   color:white;
-
-  }
+  
 
   // .searchbar-input{
 
@@ -113,9 +127,10 @@ page-map {
 
   .menu-button-toggle {
     position: fixed;
-    top: 10%;
+    top: 10.5%;
     width: 0%;
     left: 3%;
+    height: 5vh;
     box-shadow: none;
     background-color: #004886;
   }
