@@ -13,6 +13,7 @@ import { MorePage } from '../pages/more/more';
 import { ArUiPage } from '../pages/ar-ui/ar-ui';
 import { SettingsPage } from '../pages/settings/settings';
 import { TapComponent } from '../components/tap/tap';
+import { UserDataProvider } from '../providers/user-data/user-data';
 
 @Component({
   templateUrl: 'app.html'
@@ -22,9 +23,12 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
   rootPage: any;
   pages: Array<{ title: string, component: any, active: boolean, icon: string }>;
+  grades: Array<{ title: string, grade:string}>;
+  public user:  UserDataProvider;
   constructor(afAuth: AngularFireAuth, platform: Platform,
     statusBar: StatusBar,
-    splashScreen: SplashScreen) {
+    splashScreen: SplashScreen,
+ ) {
 
     // used for an example of ngFor and navigation
     this.pages = [
@@ -38,6 +42,11 @@ export class MyApp {
       { title: 'AR', component: ArUiPage, active: false, icon: 'camera' }
 
     ];
+
+    this.grades = [
+      {title:'SoftwareTesting', grade: 'A'},
+      {title:'Senior Project',grade:'A'}
+    ]
 
     // Firebase config...this will change once we create an auspex-app firebase
     // firebase.initializeApp({
@@ -64,7 +73,7 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
-
+ this.user.currentUserData.subscribe(data => this.grades  =data );
       //WikitudePlugin._sdkKey = "IHjJ+NCJO5CcF4PvDQprVSEk33sFwbYdPCAbwoXKDXbYhyvfFiFq/E7MVGTmLWdMsaV4FPcsTbJakvUeMfmnRRdV0b0m9lzCadeMY48JtN2pva5EMl1jAfoyquy+06iWu6FT/99PzkIE1ffYY4AzSak91ZxXOhTCzKZ4ktk3KaFTYWx0ZWRfX/f0OHzp29/QS1ucmGH9qGcGyysJNw+9mIzQHF3VIDAREhWUaDYEFp2YX6tj1oG36bsMtsjkq9qLSRqTsUpYKwmTS/tFqTGTTA2h6WvmnGGfnIcIAspS5vENY0YCldb0ysS2uhN56rGCCTh15slCnVzPJ6DdJQlN8s01W5On9wh1gI1pzxQDjrgYZSNfsAj9N0xlBaFzpydMHp+SRGChiug2hwLBM7KckCfH13P67vcFAVtFxGEVs/26fHV0Ek2tXy4hwUMp2mmDXf33ZoyXkvL1C4cqzB+1/4wr55WOx+KBy0y0ER7BsSxkL66b40mQ8s/Rvv8Me1A7QjK5PUVPZ4Wpn5f14tmCVnuhRReBqt7U9mWebITMese2ywuMxViNsKB8tYfBQLJwIekKmCU4ug+agM6wuAssnQe0JOv4xZHAh85TpoTjZspxV9TWPb7MAk7nMRJu3ESliGk87HvqOkEpD4Fctl7ACHaHH3SPs8q08ELxFdg0krA=";
       WikitudePlugin._sdkKey = "Jh7D5P3hTGcssQUaBAfAPKFR4pAGMqZuiuDy2o2aOvSfNDo4GQCPs180P8BeDP4CxGBNkwfc6El1uC0+uzRYjPe7ysUZq0YoB5bi3dbHY0cvDoykvR9v95U7GDqlDCa1Sd7YZztK1Adai/aMdwQrWXH0tnT/mKfUarMLHpBYZnpTYWx0ZWRfXwBcaVWusbiUd+ZmjTv5d1b46zAGmZqYwCgemc+Ziwuh4BV8bKED7axJlGlLIGDCSDaZfqKmLiVeVwq7aqVnIYj5Xwrtl/nhG0XZtEx1aiER7DjzLI9OC2n9AUb33aA/XsyB2lJYoFQnCmJ6+W/SiNKD10+/yDnzlf7xKgrZ05QgkDWNHx7R56xQlWgZjZbC/Qyz5ku8JFkEQ0UBhiYAPXA10XcHsIERuyWwdq224uLJWDM0yKL42pdYVnHkyeRUakQFBVuelN0IdO0i6w0nwXArSXPzFpiQuBoQGyR4H9FrRS8zA30mO3l4pOg/INmfo0bH9YXS6cWzaPkcK3hWcs0QkMFzoe95aFuDKeZV6etoDy3vX29uEt92Ku/FVewlsAZrJBkNRKqvLZpZLvyxjhhk2Ycq4ZsjVvN/fkJktvGjNRujSJj8PHOOPQOPlgy4a9UUOvprFXTSvqe8Mwa1a00Ri20ewwQauWTyqDiKNTZnDoqbsg0IP/FdhyIgSQrB/Mf13PUu5fppXGEw82Ee/qLKLY8Rc48bRmhjnH9MXNJOI5WjI5oykFI=";
 

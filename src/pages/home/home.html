@@ -20,6 +20,7 @@
     <div *ngFor="let alert of alerts" class="single-alert">
       <a class="alert-title">{{alert.title}}</a>
     </div>
+   
   </div>
 
 
@@ -31,17 +32,16 @@
     <img class="eagle-img" src="assets/imgs/eaglenews.png">
     <!-- Change slides spped later if need  speed="0"  -->
     <ion-slides >
-
-      <ion-slide *ngFor="let slide of slidesNames">
-        <!-- <ion-toolbar>
-        <ion-buttons end>
-          <button ion-button color="primary">Skip</button>
-        </ion-buttons>
-      </ion-toolbar> -->
-        <img [src]="slide.image" class="slide-image" />
-        <h2 class="slide-title" [innerHTML]="slide.title"></h2>
-        <p [innerHTML]="slide.description"></p>
-      </ion-slide>
+        <ion-slide *ngFor="let slide of slidesNames">
+            <!-- <ion-toolbar>
+            <ion-buttons end>
+              <button ion-button color="primary">Skip</button>
+            </ion-buttons>
+          </ion-toolbar> -->
+            <img [src]="slide.image" class="slide-image" (click)="openNews(slide.link)"/>
+            <h2 class="slide-title" [innerHTML]="slide.title"></h2>
+            <p [innerHTML]="slide.description"></p>
+          </ion-slide>
 
       <!-- <ion-toolbar>
       </ion-toolbar> -->
@@ -53,11 +53,11 @@
 
   <a class="shuttle-btn" (click)="openCampusBus()" >Campus Shuttles</a>
 
-  <div class="btn-group">
-    <button ion-button class="btn1">Hello</button>
-    <button ion-button class="btn2">Hello 2</button>
-    <button ion-button class="btn3">Hello3 </button>
-  </div>
+  <a class="shuttle-btn" (click)="openAthletics()" >FGCU Athletics</a>
+  <a class="shuttle-btn" (click)="openGulfline()" >Gulfline</a>
+  <a class="shuttle-btn" (click)="openMail()" >Eagle Mail</a>
+
+
 
   <a class="dibs" ><img class="dibs-img" (click)="openDibs()" src="assets/imgs/dibs_header.png"></a>
 </ion-content>

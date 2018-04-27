@@ -1,35 +1,28 @@
-<ion-header>
 
-  <ion-navbar>
-    <ion-title>More</ion-title>
-    <button ion-button menuToggle class="menu-button-toggle">
-      <ion-icon name="menu" class="menu-icon"></ion-icon>
-    </button>
-
-  </ion-navbar>
-
-</ion-header>
-
-<ion-content class="card-background-page">
-    <ion-card type="button" (click)="onClickCard(1, $event)">
-      <img src="assets/imgs/eagles.png"/>
-      <div class="card-title">Contact Us</div>
-    </ion-card>
-    <ion-card>
-      <img src="assets/imgs/fgcu360.png"/>
-      <!-- <div class="card-title">FGCU360</div>
-      <div class="card-subtitle">Magazine</div> -->
-    </ion-card>
-  
-    <ion-card>
-      <img src="assets/imgs/fastfacts.png"/>
-    </ion-card>
-   
-    <ion-card>
-      <img src="assets/imgs/transit.png"/>
-      <div class="card-title">Transit</div>
-    </ion-card>
-
-
-    
+<ion-content padding class="dashboard">
+    <div class="graphic-holder" style.opacity="{{showGraphic > 2 ? '1' : '0'}}">
+      <h1 class="graphic"  style.opacity="{{showGraphic > 2 ? '1' : '0'}}">
+        Welcome To Eagle Vision
+      </h1>
+    </div>
+    <div class="graphic-holder" style.opacity="{{showGraphic2 > 2 ? '1' : '0'}}">
+      <h1 class="graphic"  style.opacity="{{showGraphic2 > 2 ? '1' : '0'}}">
+        Lets Get You Setup!
+      </h1>
+    </div>
+    <div class="graphic-holder" style.opacity="{{showCanvasGraphic > 2 ? '1' : '0'}}">
+      <h1 class="graphic"  style.opacity="{{showCanvasGraphic > 2 ? '1' : '0'}}">
+        First...
+        lets get your Canvas account linked
+      </h1>
+    </div>
+    <div class="graphic-holder" style.opacity="{{showCanvasGraphicImg > 2 ? '1' : '0'}}">
+      <img class="canvas-img" src="assets/imgs/Canvas.png">
+    </div>
+    <div class="graphic-holder" style.opacity="{{endAnimation > 2 ? '1' : '0'}}">
+      <h1 class="graphic"  style.opacity="{{endAnimation > 2 ? '1' : '0'}}">
+        All Set Up!
+        Please Enjoy The Vision
+      </h1>
+    </div>
   </ion-content>

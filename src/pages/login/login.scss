@@ -1,20 +1,86 @@
+.popover-md .popover-content{
+  border-radius: 15px;
+  height: 15%;
+  // position : absolute !important ;
+  // left:46px !important;
+  // top: 364.2px !important;
+  background: #004886;
+}
+
+// .list list-md ng-pristine ng-valid ng-touched{
+//   border-top: 0px;
+//   border-left: 0px;
+//   border-right: 0px;
+//   border-bottom: 0px;
+// }
+.checkbox-md .checkbox-checked{
+  background: #004886;
+  color: #004886;
+  border-color: #004886;
+}
+
+.select-popover ion-list{
+  border-style: none ;
+}
+.item-md{
+ background-color: #004886;
+  color: white;
+}
+
 page-login {
+
+  video#bgvid {
+    position: fixed;
+    top: 50%;
+     left: 50%;
+    // width:200%;
+    
+    // height: 50%;
+    z-index: -100;
+    transform: translateX(-50%) translateY(-50%);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+  }
     form {
+
       margin-bottom: 32px;
       button {
+        background-color: #004886;
         margin-top: 20px !important;
       }
     }
+  .item-md{
+    background: transparent;
+
+  }
   
+//  .signup disable-hover button button-md button-default button-default-md button-block button-block-md{
+//    background-color:black;
+//  }
+   
+    // color: white;
+  
+  // .button-md{
+  //   background: #004886;
+  // }
+  // }
+
+ 
+
     p {
       font-size: 0.8em;
-      color: #d2d2d2;
+      color: #004886;
     }
   
     ion-label {
       margin-left: 5px;
+      //background: black;
+     
     }
-  
+  .label-md[stacked]{
+    color: white;
+  }
     ion-input {
       padding: 5px;
     }
@@ -28,11 +94,17 @@ page-login {
       p {
         font-size: 60%;
       }
-      ion-label {
+      ion-label {color: white;
         margin: 2px 0;
       }
       .item-inner {
         border-bottom: 0 !important;
       }
     }
+    .button-md-light{
+      background-color:#004886;
+      color: white; 
+    }
+
+   
   }

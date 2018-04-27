@@ -1,27 +1,73 @@
-page-more{
-    .card-background-page {
-
-    ion-card {
-      position: relative;
-      text-align: center;
-    }
-  
-    .card-title {
-      position: absolute;
-      top: 36%;
-      font-size: 2.0em;
-      width: 100%;
-      font-weight: bold;
-      color:white;
-    }
-  
-    .card-subtitle {
-      font-size: 1.0em;
-      position: absolute;
-      top: 52%;
-      width: 100%;
-      color: #fff;
-    }
-  
-  }
+.my-title{
+  display: inline-block;
+}
+.log-out{
+  float: right;
+  display: inline-block;
+}
+.increment{
+  position: absolute;
+  top: 50%;
+  left: 30%;
+}
+.test{
+  position: absolute;
+  top: 70%;
+  left: 30%;
+}
+.new{
+  background-color:blue;
+  position: absolute;
+  top: 70%;
+  left: 30%;
+}
+.dashboard{
+  background-color: #ffffff
+}
+ion-navbar.toolbar{
+  color: #004886 !important
+}
+.get-button{
+  position: absolute;
+  top: 90%;
+  left: 30%;
+}
+.final-button{
+  position: absolute;
+  top: 90%;
+  left: 70%;
+}
+.graphic{
+  position: absolute;
+  top: 30%;
+  left: 10%;
+  text-align: center;
+  width: 80%;
+  right: 10%;
+  opacity: 0;
+  display: block;
+  transition: all 2s ease-in-out;
+  color: rgba(0,0,0,0.68);
+  font-size: 30px;
+}
+.graphic-holder{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  display: block;
+  transition: all 3s ease-in-out;
+}
+.canvas-img{
+  position: absolute;
+  top: 50%;
+  left: 35%;
+  text-align: center;
+  width: 30%;
+  right: 35%;
+  opacity: 1;
+  display: block;
+  transition: all 2s ease-in-out;
 }

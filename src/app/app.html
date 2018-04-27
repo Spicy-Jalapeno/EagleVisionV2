@@ -14,12 +14,10 @@
     </button>
     </ion-list>
 
-    <span no-lines class='classToday' ion-item>Classes Today: </span>
+    <span no-lines class='classToday' ion-item>Grades: </span>
     <ion-list no-lines ion-item>
-     <span ion-item >Computer Sciene
- 
-     </span>
-     <span ion-item> Software Testing</span>
+     <span ion-item  *ngFor="let grade of grades" >{{grade?.title}} </span>
+    
     </ion-list>
   </ion-content>
   </ion-menu>

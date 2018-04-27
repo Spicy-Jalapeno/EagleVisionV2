@@ -3,6 +3,7 @@ import { Injectable,ViewChild, ElementRef } from '@angular/core';
 import { AutoCompleteService } from 'ionic2-auto-complete';
 import { AutoCompleteComponent } from 'ionic2-auto-complete';
 import { Platform } from 'ionic-angular/platform/platform';
+import { BuildingVendingProvider } from '../../providers/building-vending/building-vending';
 
 
  declare var google;
@@ -17,9 +18,12 @@ export class BuildingInfoProvider implements AutoCompleteService{
   //items: any;
   // map: any;
   // @ViewChild('map') mapElement: ElementRef;
-  items = ["Arts Complex", "Aquatic Center", " Ben Griffen Hall", "Cohen Center", "Edwards Halls", "Emergent Technology Institute (ETI)", "Holmes Engineering", "Howard Hall", "Kleist Health Education Center", "Lutgert Hall", "Library", "Marieb Hall", "McTarnaghan Hall", "Merwin Hall", "Music Building", "FGCU Naples Center", "Naples Botanical Gardens", "North Lake Village", "Reed Hall", "Seidler Hall", "Sugden Hall", "Sugden Resort & Hospitality Mgt", "Biscayne Hall", "Eagle Hall", "Evergales Hall", "Plametto Hall", "Ospery Hall","Margaret S. Sugden Welcome Center", "WGCU Broadcast Building","Whitaker Hall"];
+  private buildings: Array<any> = [];
   
-  buildingLocation = [{
+  // items = ["Arts Complex", "Aquatic Center", " Ben Griffen Hall", "Cohen Center", "Edwards Halls", "Emergent Technology Institute (ETI)", "Holmes Engineering", "Howard Hall", "Kleist Health Education Center", "Lutgert Hall", "Library", "Marieb Hall", "McTarnaghan Hall", "Merwin Hall", "Music Building", "FGCU Naples Center", "Naples Botanical Gardens", "North Lake Village", "Reed Hall", "Seidler Hall", "Sugden Hall", "Sugden Resort & Hospitality Mgt", "Biscayne Hall", "Eagle Hall", "Evergales Hall", "Plametto Hall", "Ospery Hall","Margaret S. Sugden Welcome Center", "WGCU Broadcast Building","Whitaker Hall"];
+  items= [];
+    buildingLocation = [
+    {
     title: "howard hall",
     lat: "26.465215", 
     lng: "-81.77286",
@@ -60,8 +64,8 @@ export class BuildingInfoProvider implements AutoCompleteService{
   ];
  
 
-  constructor(public platform: Platform) {
-    console.log('Hello BuildingInfoProvider Provider');
+  constructor(public platform: Platform, public buildingData: BuildingVendingProvider) {
+    // console.log('Hello BuildingInfoProvider Provider');
     this.platform = platform;
   //   this.items = [
   //     {title: 'one'},
@@ -71,6 +75,7 @@ export class BuildingInfoProvider implements AutoCompleteService{
   //     {title: 'five'},
   //     {title: 'six'}
   // ]
+  this.buildingData.currentBuildingData.subscribe(data => this.buildings = data)
  
   }
   ionViewDidLoad() {
@@ -96,6 +101,12 @@ export class BuildingInfoProvider implements AutoCompleteService{
 
   // }
   getResults(keyword:String){
+    console.log(this.buildings[0]);
+
+    for(var i = 0; i<this.buildings[0].buildings.length;i++)
+    {
+      this.items[i] = this.buildings[0].buildings[i].title;
+    }
     if(keyword && keyword.trim() != ''){
    return  this.items.filter((item) => {
       return item.toLowerCase().indexOf(keyword.toLowerCase()) > -1;
@@ -105,30 +116,64 @@ export class BuildingInfoProvider implements AutoCompleteService{
   }
 
   getLocation(name:string){
-    console.log("Name is "+ name);
+    // console.log("Name is "+ name);
+    console.log("Running the get location method ");
     var item;
-    
-    // for (item in this.buildingLocation){
-    //   if(item.title){
-     // array.find(x => x.name === 'string 1')
-     item = this.buildingLocation.find(x=>x.title === name);
-     console.log("THis is item " + item)
-       if(item.title === name){
+    let building =[];
+  
+    //  item = this.buildings[0].buildings.find(x=>x.title === name);
+
+    //  for(var i = 0; i< this.buildings[0].buildings.length;i++){
+       building = this.buildings[0].buildings;
+    //  }
+    var lat; 
+    var lng; 
+    var position; 
+    var title; 
+    console.log(building);
+
+    // item = building.find(x=>x.title === name);
+    for(var i = 0; i<building.length;i++){
+      // console.log(building[i].title === name)
+      
+      if(building[i].title === name){
+        title = building[i].title;
+         lat = building[i].lat;
+         lng = building[i].lon;
+         console.log(lat)
+         console.log(lng)
+         console.log(title)
+
+         
+          // console.log(position);   
+          // console.log(lat);
+          // console.log(lng);
+          
+      }
+    }
+    // //  console.log("THis is item " + item)
+    //    if(item.title === name){
         
       
-      console.log("Here is the if statment");
-      console.log(item.lat,item.lng);
-      var lat = String(item.lat);
-      var lng = String(item.lng);
-        var position = new google.maps.LatLng(lat,lng);
-        console.log(position);   
-        console.log(lat);
-        console.log(lng);
+    //   // console.log("Here is the if statment");
+    //   // console.log(item.lat,item.lng);
+    //   var lat = String(item.lat);
+    //   var lng = String(item.lng);
+    //     var position = new google.maps.LatLng(lat,lng);
+    //     // console.log(position);   
+    //     // console.log(lat);
+    //     // console.log(lng);
         var markerNew;
-      return   markerNew = new google.maps.Marker({position: position , title: item.name});
-     //  console.log("Setting up the map");
-    //    markerNew.setMap(this.map);
-      }
+
+        position = new google.maps.LatLng(lat,lng);
+
+
+
+
+      return   markerNew = new google.maps.Marker({position: position , title: title});
+    //  //  console.log("Setting up the map");
+    // //    markerNew.setMap(this.map);
+    //   }
     }
   //}
 
